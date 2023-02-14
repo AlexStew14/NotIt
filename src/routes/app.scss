@@ -1,14 +1,33 @@
 html {
+  --primary-hue: 206;
+  --primary-saturation: 100%;
+  --primary-lightness: 41%;
+
+  --primary1: hsl(var(--primary-hue), var(--primary-saturation), var(--primary-lightness));
+  --primary2: hsl(var(--primary-hue), var(--primary-saturation), calc(var(--primary-lightness) + 5%));
   --surface1: hsl(0, 0%, 100%);
   --surface2: hsl(0, 0%, 96%);
-  --surface3: hsl(0, 0%, 92%);
-  --surface4: hsl(0, 0%, 88%);
-  --primary1: hsl(206, 100%, 41%);
-  --primary2: hsl(206, 100%, 45%);
+  --surface3: hsl(0, 0%, 88%);
+  --surface4: hsl(var(--primary-hue), calc(var(--primary-saturation) / 5), 88%);
+  --text1: hsl(0, 0%, 5%);
+  --text2: hsl(0, 0%, 25%);
+  --text3: hsl(0, 0%, 50%);
+
+  --font-small: 0.6rem;
+  --font-weight-small: 100;
+
+  --font-medium: 0.88rem;
+  --font-weight-medium: 200;
+
+  --navbar-height: 3rem;
+  --sidebar-width: 17rem;
+
+  --content-padding: 0 1.5rem;
 
   font-family: IBMPlex Sans, Arial, sans-serif;
+  color: var(--text1);
 
-  background-color: var(--surface1);
+  background-color: var(--surface4);
 }
 
 body {

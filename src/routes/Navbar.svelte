@@ -1,13 +1,11 @@
 <div class="navbar-container">
 	<div class="navbar-inner">
 		<h3>reddit</h3>
-		<div class="search-bar">
-			<p>Search</p>
-		</div>
+		<div class="search-bar"><span>Search Reddit</span></div>
 		<div class="navbar-buttons">
 			<div class="outlined-button">Get App</div>
 			<div class="filled-button">Log In</div>
-			<div class="login" />
+			<div class="profile" />
 		</div>
 	</div>
 </div>
@@ -17,17 +15,32 @@
 		top: 0;
 		position: fixed;
 		width: 100%;
-		height: 3rem;
+		height: var(--navbar-height);
 		background-color: var(--surface1);
 		border-bottom: 1px solid var(--surface2);
 	}
 
 	.navbar-inner {
 		display: flex;
-		padding: 0 2rem;
+		padding: var(--content-padding);
 		justify-content: space-between;
 		align-items: center;
 		height: 100%;
+	}
+
+	.search-bar {
+		min-width: 35rem;
+		background-color: var(--surface2);
+		border-radius: 2rem;
+		padding: 0.75rem 2rem;
+		color: var(--text3);
+		font-size: var(--font-medium);
+		font-weight: var(--font-weight-medium);
+		border: 1px solid var(--surface3);
+		&:hover {
+			border: 1px solid var(--primary1);
+			background-color: var(--surface1);
+		}
 	}
 
 	.navbar-buttons {
@@ -40,7 +53,7 @@
 		text-align: center;
 		padding: 0.5rem 2rem;
 		border: 1px solid var(--primary1);
-		border-radius: 1rem;
+		border-radius: 2rem;
 		color: var(--primary1);
 		&:hover {
 			background-color: var(--surface2);
@@ -52,9 +65,8 @@
 		text-align: center;
 		padding: 0.5rem 2rem;
 		background-color: var(--primary1);
-		border-radius: 1rem;
+		border-radius: 2rem;
 		color: white;
-
 		&:hover {
 			background-color: var(--primary2);
 			cursor: pointer;
