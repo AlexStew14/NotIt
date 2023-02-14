@@ -1,0 +1,16 @@
+html {
+  --surface1: hsl(0, 0%, 100%);
+  --surface2: hsl(0, 0%, 96%);
+  --surface3: hsl(0, 0%, 92%);
+  --surface4: hsl(0, 0%, 88%);
+  --primary1: hsl(206, 100%, 41%);
+  --primary2: hsl(206, 100%, 45%);
+
+  font-family: IBMPlex Sans, Arial, sans-serif;
+
+  background-color: var(--surface1);
+}
+
+body {
+  margin: 0;
+}
