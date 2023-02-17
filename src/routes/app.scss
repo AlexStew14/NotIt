@@ -5,6 +5,15 @@ html {
 
   --primary1: hsl(var(--primary-hue), var(--primary-saturation), var(--primary-lightness));
   --primary2: hsl(var(--primary-hue), var(--primary-saturation), calc(var(--primary-lightness) + 5%));
+
+  --secondary-hue: 16;
+  --secondary-saturation: 100%;
+  --secondary-lightness: 43%;
+
+  --secondary1: hsl(var(--secondary-hue), var(--secondary-saturation), var(--secondary-lightness));
+  --secondary2: hsl(var(--secondary-hue), var(--secondary-saturation), calc(var(--secondary-lightness) + 5%));
+
+
   --surface1: hsl(0, 0%, 100%);
   --surface2: hsl(0, 0%, 96%);
   --surface3: hsl(0, 0%, 88%);

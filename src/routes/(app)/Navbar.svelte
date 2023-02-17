@@ -4,7 +4,7 @@
 		<div class="search-bar"><span>Search Reddit</span></div>
 		<div class="navbar-buttons">
 			<div class="outlined-button">Get App</div>
-			<a href="/login/">
+			<a href="/login">
 				<div class="filled-button">Log In</div>
 			</a>
 			<div class="profile" />
@@ -20,58 +20,60 @@
 		height: var(--navbar-height);
 		background-color: var(--surface1);
 		border-bottom: 1px solid var(--surface2);
-	}
 
-	.navbar-inner {
-		display: flex;
-		padding: var(--content-padding);
-		justify-content: space-between;
-		align-items: center;
-		height: 100%;
-	}
+		.navbar-inner {
+			display: flex;
+			padding: var(--content-padding);
+			justify-content: space-between;
+			align-items: center;
+			height: 100%;
 
-	.search-bar {
-		min-width: 35rem;
-		background-color: var(--surface2);
-		border-radius: 2rem;
-		padding: 0.75rem 2rem;
-		color: var(--text3);
-		font-size: var(--font-medium);
-		font-weight: var(--font-weight-medium);
-		border: 1px solid var(--surface3);
-		&:hover {
-			border: 1px solid var(--primary1);
-			background-color: var(--surface1);
-		}
-	}
+			.search-bar {
+				min-width: 35rem;
+				background-color: var(--surface2);
+				border-radius: 2rem;
+				padding: 0.75rem 2rem;
+				color: var(--text3);
+				font-size: var(--font-medium);
+				font-weight: var(--font-weight-medium);
+				border: 1px solid var(--surface3);
 
-	.navbar-buttons {
-		align-items: center;
-		display: flex;
-		gap: 1rem;
-	}
+				&:hover {
+					border: 1px solid var(--primary1);
+					background-color: var(--surface1);
+				}
+			}
 
-	.outlined-button {
-		text-align: center;
-		padding: 0.5rem 2rem;
-		border: 1px solid var(--primary1);
-		border-radius: 2rem;
-		color: var(--primary1);
-		&:hover {
-			background-color: var(--surface2);
-			cursor: pointer;
-		}
-	}
+			.navbar-buttons {
+				align-items: center;
+				display: flex;
+				gap: 1rem;
+				text-align: center;
 
-	.filled-button {
-		text-align: center;
-		padding: 0.5rem 2rem;
-		background-color: var(--primary1);
-		border-radius: 2rem;
-		color: white;
-		&:hover {
-			background-color: var(--primary2);
-			cursor: pointer;
+				.outlined-button {
+					padding: 0.5rem 2rem;
+					border: 1px solid var(--primary1);
+					border-radius: 2rem;
+					color: var(--primary1);
+
+					&:hover {
+						background-color: var(--surface2);
+						cursor: pointer;
+					}
+				}
+
+				.filled-button {
+					padding: 0.5rem 2rem;
+					background-color: var(--primary1);
+					border-radius: 2rem;
+					color: white;
+
+					&:hover {
+						background-color: var(--primary2);
+						cursor: pointer;
+					}
+				}
+			}
 		}
 	}
 </style>

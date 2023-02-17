@@ -15,15 +15,15 @@
 		margin-top: var(--navbar-height);
 		width: 100%;
 		height: 100vh;
-	}
 
-	.content-container {
-		display: flex;
-		justify-content: center;
-	}
+		.content-container {
+			display: flex;
+			justify-content: center;
 
-	.posts-container {
-		max-width: 40rem;
-		padding-top: 1.5rem;
+			.posts-container {
+				max-width: 40rem;
+				padding-top: 1.5rem;
+			}
+		}
 	}
 </style>

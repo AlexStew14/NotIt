@@ -1,5 +1,5 @@
 import { redirect, fail } from '@sveltejs/kit';
-import { createUser } from '$lib/user.model';
+import { createUser } from '$lib/user.model.js';
 
 export const actions = {
 	default: async ({ cookies, request }) => {
