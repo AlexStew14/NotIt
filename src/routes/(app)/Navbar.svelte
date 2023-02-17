@@ -4,7 +4,9 @@
 		<div class="search-bar"><span>Search Reddit</span></div>
 		<div class="navbar-buttons">
 			<div class="outlined-button">Get App</div>
-			<div class="filled-button">Log In</div>
+			<a href="/login/">
+				<div class="filled-button">Log In</div>
+			</a>
 			<div class="profile" />
 		</div>
 	</div>
