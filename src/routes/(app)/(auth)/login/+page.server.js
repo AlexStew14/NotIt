@@ -8,7 +8,7 @@ export const load = ({ locals }) => {
 };
 
 export const actions = {
-	default: async ({ cookies, request }) => {
+	login: async ({ cookies, request }) => {
 		const data = Object.fromEntries(await request.formData());
 		const { email, password } = data;
 
@@ -32,6 +32,6 @@ export const actions = {
 			path: '/'
 		});
 
-		throw redirect(302, '/guarded');
+		throw redirect(302, '/');
 	}
 };

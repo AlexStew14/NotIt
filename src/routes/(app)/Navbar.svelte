@@ -1,14 +1,27 @@
+<script>
+	export let user;
+</script>
+
 <div class="navbar-container">
 	<div class="navbar-inner">
 		<h3>reddit</h3>
 		<div class="search-bar"><span>Search Reddit</span></div>
-		<div class="navbar-buttons">
-			<div class="outlined-button">Get App</div>
-			<a href="/login">
-				<div class="filled-button">Log In</div>
-			</a>
-			<div class="profile" />
-		</div>
+		{#if user}
+			<div class="navbar-buttons">
+				<p>{user.email}</p>
+				<form method="POST" action="?/logout">
+					<button class="outlined-button" type="submit">Log Out</button>
+				</form>
+			</div>
+		{:else}
+			<div class="navbar-buttons">
+				<button class="outlined-button">Get App</button>
+				<a href="/login">
+					<button class="filled-button">Log In</button>
+				</a>
+				<div class="profile" />
+			</div>
+		{/if}
 	</div>
 </div>
 

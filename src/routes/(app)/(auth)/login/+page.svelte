@@ -1,3 +1,7 @@
+<script>
+	import { enhance } from '$app/forms';
+</script>
+
 <div class="login-container">
 	<a class="exit-button" href="/">X</a>
 	<div class="login-inner">
@@ -17,7 +21,7 @@
 			<p>OR</p>
 			<span />
 		</div>
-		<form class="login-form" method="POST">
+		<form class="login-form" method="POST" action="?/login" use:enhance>
 			<input class="login-input" name="email" type="email" placeholder="Email Address" />
 			<input class="login-input" name="password" type="password" placeholder="Password" />
 			<button class="login-button" type="submit">Log in</button>
