@@ -5,12 +5,18 @@ import jwt from 'jsonwebtoken';
 
 export async function createUser(email, password) {
 	try {
-		return await db.user.create({
+		const user = await db.user.create({
 			data: {
 				email,
 				password: await bcrypt.hash(password, 12)
 			}
 		});
+
+		const token = jwt.sign({ id: user.id, email: user.email }, JWT_ACCESS_SECRET, {
+			expiresIn: '1d'
+		});
+
+		return { token };
 	} catch (error) {
 		return { error };
 	}

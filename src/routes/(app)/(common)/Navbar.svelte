@@ -1,24 +1,25 @@
 <script>
+	import { registrationOpen } from '$lib/stores.js';
+
 	export let user;
 </script>
 
 <div class="navbar-container">
 	<div class="navbar-inner">
-		<h3>reddit</h3>
+		<h3><a href="/">reddit</a></h3>
 		<div class="search-bar"><span>Search Reddit</span></div>
 		{#if user}
 			<div class="navbar-buttons">
 				<p>{user.email}</p>
-				<form method="POST" action="?/logout">
+				<a href="/submit"><button class="filled-button">Create Post</button></a>
+				<form method="POST" action="/?/logout">
 					<button class="outlined-button" type="submit">Log Out</button>
 				</form>
 			</div>
 		{:else}
 			<div class="navbar-buttons">
 				<button class="outlined-button">Get App</button>
-				<a href="/login">
-					<button class="filled-button">Log In</button>
-				</a>
+				<button class="filled-button" on:click={() => ($registrationOpen = true)}>Log In</button>
 				<div class="profile" />
 			</div>
 		{/if}

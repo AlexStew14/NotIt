@@ -21,14 +21,13 @@
 		background-color: var(--surface1);
 		border: 1px solid var(--surface3);
 		border-radius: 0.25rem;
-		width: 100%;
 		display: flex;
-		height: 100%;
+		max-height: 20rem;
 	}
 
 	.sidebar-container {
 		min-width: 2.5rem;
-		height: 100%;
+		min-height: 100%;
 		background-color: var(--surface2);
 	}
 
