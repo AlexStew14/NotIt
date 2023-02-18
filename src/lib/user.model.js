@@ -18,6 +18,7 @@ export async function createUser(email, password) {
 
 		return { token };
 	} catch (error) {
+		console.log(error);
 		return { error };
 	}
 }
@@ -46,6 +47,7 @@ export async function loginUser(email, password) {
 
 		return { token };
 	} catch (error) {
+		console.log(error);
 		return { error };
 	}
 }

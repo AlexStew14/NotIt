@@ -53,4 +53,8 @@ button {
   border: inherit;
   background-color: inherit;
   color: inherit;
+
+  &:hover {
+    cursor: pointer;
+  }
 }

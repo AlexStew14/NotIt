@@ -12,10 +12,21 @@ export const handle = async ({ event, resolve }) => {
 			const user = await db.user.findUnique({
 				where: {
 					id: jwtUser.id
+				},
+				select: {
+					id: true,
+					email: true,
+					votes: {
+						select: {
+							postId: true,
+							value: true
+						}
+					}
 				}
 			});
 			if (user) {
-				event.locals.user = { id: user.id, email: user.email };
+				console.log(user);
+				event.locals.user = user;
 			}
 		} catch (error) {
 			console.log(error);

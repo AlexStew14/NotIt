@@ -1,25 +1,26 @@
 <script>
-	import UserPost from './(common)/UserPost.svelte';
+	import UserPost from './(content)/UserPost.svelte';
+	export let data;
+	let posts = [];
+	$: ({ posts } = data);
 </script>
 
-<div class="page-container">
-	<div class="posts-container">
-		<UserPost />
-	</div>
+<div class="posts-container">
+	{#each posts as post}
+		<UserPost
+			title={post.title}
+			content={post.content}
+			id={post.id}
+			totalVotes={post.totalVotes}
+			email={post.author.email}
+		/>
+	{/each}
 </div>
 
 <style lang="scss">
-	.page-container {
-		left: 0;
-		width: 100vw;
-		height: 100vh;
-		position: fixed;
-		display: flex;
-		justify-content: center;
-
-		.posts-container {
-			max-width: 40rem;
-			padding-top: 1.5rem;
-		}
+	.posts-container {
+		margin: 0 auto;
+		max-width: 40rem;
+		padding-top: 1.5rem;
 	}
 </style>

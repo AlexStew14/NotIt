@@ -1,14 +1,14 @@
 <script>
 	import { registrationOpen } from '$lib/stores.js';
 	import { onDestroy } from 'svelte';
-	import Navbar from './(common)/Navbar.svelte';
-	import Sidebar from './(common)/Sidebar.svelte';
+	import Navbar from './(layout)/Navbar.svelte';
+	import Sidebar from './(layout)/Sidebar.svelte';
 	import '../app.scss';
 	import Registration from './(auth)/Registration.svelte';
+	import { user } from '$lib/stores.js';
 
 	export let data;
-	let user;
-	$: ({ user } = data);
+	$: $user = data?.user;
 
 	let registrationOpenValue = false;
 	const registrationOpenUnsubscribe = registrationOpen.subscribe(
@@ -17,7 +17,7 @@
 	onDestroy(registrationOpenUnsubscribe);
 </script>
 
-<Navbar {user} />
+<Navbar />
 <Sidebar />
 {#if registrationOpenValue}
 	<Registration />
