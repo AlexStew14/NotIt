@@ -6,13 +6,11 @@
 	<h3>Create a post</h3>
 	<div class="line" />
 	<div class="submit-container">
-		<div class="submit-inner">
-			<form method="POST" action="/?/createPost" use:enhance>
-				<input class="title-input" type="text" name="title" placeholder="Title" />
-				<input class="content-input" type="text" name="content" placeholder="Content" />
-				<button class="submit-button" type="submit">Post</button>
-			</form>
-		</div>
+		<form method="POST" action="/?/createPost" use:enhance>
+			<input class="title-input" type="text" name="title" placeholder="Title" />
+			<input class="content-input" type="text" name="content" placeholder="Content" />
+			<button class="submit-button" type="submit">Post</button>
+		</form>
 	</div>
 </div>
 
@@ -28,12 +26,9 @@
 
 		.submit-container {
 			max-width: 45rem;
-
-			.submit-inner {
-				background-color: var(--surface1);
-				border-radius: 0.25rem;
-				width: 100%;
-			}
+			background-color: var(--surface1);
+			border-radius: 0.25rem;
+			width: 100%;
 		}
 	}
 </style>

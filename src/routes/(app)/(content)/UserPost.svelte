@@ -14,34 +14,32 @@
 
 <div class="post-container">
 	<div class="sidebar-container">
-		<div class="sidebar-inner">
-			{#if $user && postVoteValue !== 1}
-				<form method="POST" action="/?/createVote" use:enhance>
-					<input name="postId" value={id} type="hidden" />
-					<input name="value" value={1} type="hidden" />
-					<button type="submit">Up</button>
-				</form>
-			{/if}
-			{#if $user && postVoteValue !== 0}
-				<form method="POST" action="/?/deleteVote" use:enhance>
-					<input name="postId" value={id} type="hidden" />
-					<button type="submit">
-						{totalVotes}
-					</button>
-				</form>
-			{:else}
-				<p>
+		{#if $user && postVoteValue !== 1}
+			<form method="POST" action="/?/createVote" use:enhance>
+				<input name="postId" value={id} type="hidden" />
+				<input name="value" value={1} type="hidden" />
+				<button type="submit">Up</button>
+			</form>
+		{/if}
+		{#if $user && postVoteValue !== 0}
+			<form method="POST" action="/?/deleteVote" use:enhance>
+				<input name="postId" value={id} type="hidden" />
+				<button type="submit">
 					{totalVotes}
-				</p>
-			{/if}
-			{#if $user && postVoteValue !== -1}
-				<form method="POST" action="/?/createVote" use:enhance>
-					<input name="postId" value={id} type="hidden" />
-					<input name="value" value={-1} type="hidden" />
-					<button type="submit">Down</button>
-				</form>
-			{/if}
-		</div>
+				</button>
+			</form>
+		{:else}
+			<p>
+				{totalVotes}
+			</p>
+		{/if}
+		{#if $user && postVoteValue !== -1}
+			<form method="POST" action="/?/createVote" use:enhance>
+				<input name="postId" value={id} type="hidden" />
+				<input name="value" value={-1} type="hidden" />
+				<button type="submit">Down</button>
+			</form>
+		{/if}
 	</div>
 	<div class="post-inner">
 		<p class="post-author">By: {email}</p>
@@ -64,15 +62,10 @@
 			min-width: 2.5rem;
 			min-height: 100%;
 			background-color: var(--surface2);
-
-			.sidebar-inner {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: space-around;
-				width: 100%;
-				height: 100%;
-			}
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-around;
 		}
 
 		.post-inner {

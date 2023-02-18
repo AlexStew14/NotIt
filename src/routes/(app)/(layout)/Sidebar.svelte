@@ -1,20 +1,18 @@
 <div class="sidebar-container">
-	<div class="sidebar-inner">
-		<div class="topics-container">
-			<div class="topic-container">
-				<p class="topic-header">FEEDS</p>
-				<div class="topics">
-					<p>Home</p>
-					<p>Popular</p>
-				</div>
+	<div class="topics-container">
+		<div class="topic-container">
+			<p class="topic-header">FEEDS</p>
+			<div class="topics">
+				<p>Home</p>
+				<p>Popular</p>
 			</div>
-			<div class="topic-container">
-				<p class="topic-header">RECENT</p>
-				<div class="topics">
-					<p>r/sveltejs</p>
-					<p>r/reactjs</p>
-					<p>r/programmerhumor</p>
-				</div>
+		</div>
+		<div class="topic-container">
+			<p class="topic-header">RECENT</p>
+			<div class="topics">
+				<p>r/sveltejs</p>
+				<p>r/reactjs</p>
+				<p>r/programmerhumor</p>
 			</div>
 		</div>
 	</div>
@@ -30,34 +28,27 @@
 		background-color: var(--surface1);
 		border-top: 1px solid var(--surface2);
 		border-right: 1px solid var(--surface2);
-	}
-
-	.sidebar-inner {
 		padding: var(--content-padding);
 		padding-top: 0.5rem;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		width: 100%;
-	}
 
-	.topics-container {
-		display: flex;
-		flex-direction: column;
-	}
+		.topics-container {
+			display: flex;
+			flex-direction: column;
 
-	.topic-header {
-		font-size: var(--font-small);
-		font-weight: var(--font-weight-small);
-		color: var(--text3);
-	}
+			.topic-header {
+				font-size: var(--font-small);
+				font-weight: var(--font-weight-small);
+				color: var(--text3);
+			}
+		}
 
-	.topics {
-		p {
-			color: var(--text2);
-			font-size: var(--font-medium);
-			font-weight: var(--font-weight-medium);
-			padding: 0.25rem;
+		.topics {
+			p {
+				color: var(--text2);
+				font-size: var(--font-medium);
+				font-weight: var(--font-weight-medium);
+				padding: 0.25rem;
+			}
 		}
 	}
 </style>
