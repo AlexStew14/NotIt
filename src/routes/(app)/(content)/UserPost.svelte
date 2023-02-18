@@ -1,7 +1,6 @@
 <script>
 	import { enhance } from '$app/forms';
 	import { user } from '$lib/stores.js';
-	import { onDestroy } from 'svelte';
 
 	export let content = '';
 	export let title = '';
@@ -9,24 +8,21 @@
 	export let id = '';
 	export let totalVotes = 0;
 
-	let userValue;
-	const unsubscribeUser = user.subscribe((value) => (userValue = value));
-	let postVoteValue = 0;
-	$: postVoteValue = userValue?.votes.find((vote) => vote.postId === id)?.value || 0;
-	onDestroy(unsubscribeUser);
+	let postVoteValue;
+	$: postVoteValue = $user?.votes.find((vote) => vote.postId === id)?.value || 0;
 </script>
 
 <div class="post-container">
 	<div class="sidebar-container">
 		<div class="sidebar-inner">
-			{#if userValue && postVoteValue !== 1}
+			{#if $user && postVoteValue !== 1}
 				<form method="POST" action="/?/createVote" use:enhance>
 					<input name="postId" value={id} type="hidden" />
 					<input name="value" value={1} type="hidden" />
 					<button type="submit">Up</button>
 				</form>
 			{/if}
-			{#if userValue && postVoteValue !== 0}
+			{#if $user && postVoteValue !== 0}
 				<form method="POST" action="/?/deleteVote" use:enhance>
 					<input name="postId" value={id} type="hidden" />
 					<button type="submit">
@@ -38,7 +34,7 @@
 					{totalVotes}
 				</p>
 			{/if}
-			{#if userValue && postVoteValue !== -1}
+			{#if $user && postVoteValue !== -1}
 				<form method="POST" action="/?/createVote" use:enhance>
 					<input name="postId" value={id} type="hidden" />
 					<input name="value" value={-1} type="hidden" />

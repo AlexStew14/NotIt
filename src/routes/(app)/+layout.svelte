@@ -1,6 +1,5 @@
 <script>
 	import { registrationOpen } from '$lib/stores.js';
-	import { onDestroy } from 'svelte';
 	import Navbar from './(layout)/Navbar.svelte';
 	import Sidebar from './(layout)/Sidebar.svelte';
 	import '../app.scss';
@@ -9,17 +8,11 @@
 
 	export let data;
 	$: $user = data?.user;
-
-	let registrationOpenValue = false;
-	const registrationOpenUnsubscribe = registrationOpen.subscribe(
-		(value) => (registrationOpenValue = value)
-	);
-	onDestroy(registrationOpenUnsubscribe);
 </script>
 
 <Navbar />
 <Sidebar />
-{#if registrationOpenValue}
+{#if $registrationOpen}
 	<Registration />
 {/if}
 <div class="slot-container">

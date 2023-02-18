@@ -2,11 +2,6 @@
 	import { registrationOpen } from '$lib/stores.js';
 	import { enhance } from '$app/forms';
 	import { user } from '$lib/stores.js';
-	import { onDestroy } from 'svelte';
-
-	let userValue;
-	const unsubscribeUser = user.subscribe((value) => (userValue = value));
-	onDestroy(unsubscribeUser);
 </script>
 
 <div class="navbar-container">
@@ -14,8 +9,8 @@
 		<h3><a href="/">reddit</a></h3>
 		<div class="navbar-inner-right">
 			<div class="search-bar"><span>Search Reddit</span></div>
-			{#if userValue}
-				<p>{userValue.email}</p>
+			{#if $user}
+				<p>{$user.email}</p>
 				<a href="/submit"><button class="filled-button">Create Post</button></a>
 				<form method="POST" action="/?/logout" use:enhance>
 					<button class="outlined-button" type="submit">Log Out</button>
