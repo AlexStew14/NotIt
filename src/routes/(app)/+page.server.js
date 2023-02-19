@@ -74,26 +74,6 @@ export const actions = {
 
 		return { success: true };
 	},
-	createPost: async ({ request, locals }) => {
-		if (!locals.user) {
-			return fail(401, { error: 'Unauthorized' });
-		}
-
-		const data = Object.fromEntries(await request.formData());
-		const { title, content } = data;
-
-		if (!title || !content) {
-			return fail(400, { error: 'Missing title or content' });
-		}
-
-		const { error, post } = await createPost(title, content, locals.user.id);
-
-		if (error) {
-			return fail(500, { error });
-		}
-
-		throw redirect(302, '/');
-	},
 	createVote: async ({ request, locals }) => {
 		if (!locals.user) {
 			return fail(401, { error: 'Unauthorized' });

@@ -19,8 +19,8 @@
 
 <style lang="scss">
 	.posts-container {
+		padding: 2rem 0;
 		margin: 0 auto;
 		max-width: 40rem;
-		padding-top: 1.5rem;
 	}
 </style>
