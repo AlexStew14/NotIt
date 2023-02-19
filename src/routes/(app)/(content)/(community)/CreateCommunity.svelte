@@ -1,7 +1,9 @@
 <script>
-	import CustomInput from '../(common)/CustomInput.svelte';
+	import CustomInput from '../../(common)/CustomInput.svelte';
 	import { enhance } from '$app/forms';
 	import { createCommunityOpen } from '$lib/stores.js';
+
+	let formData;
 </script>
 
 <div class="page-container">
@@ -13,8 +15,33 @@
 			<h4 class="title-text">Name</h4>
 			<p class="info-text">Community names including capitalization cannot be changed.</p>
 		</div>
-		<form class="community-form" method="POST" action="/?/createCommunity" use:enhance>
-			<CustomInput maxLength="21" name="name" type="text" leftText="r/" />
+		<form
+			class="community-form"
+			method="POST"
+			action="/?/createCommunity"
+			use:enhance={() => {
+				return async ({ result, update }) => {
+					formData = result.data;
+					update();
+					if (result.type === 'success') {
+						$createCommunityOpen = false;
+					}
+				};
+			}}
+		>
+			<CustomInput
+				maxLength="21"
+				name="name"
+				type="text"
+				leftText="n/"
+				error={formData?.error?.name}
+			/>
+			<CustomInput
+				name="description"
+				type="textarea"
+				placeholder="Description"
+				error={formData?.error?.description}
+			/>
 			<div class="bottom-container">
 				<button class="primary-outlined-button" on:click={() => ($createCommunityOpen = false)}>
 					Cancel
@@ -74,6 +101,10 @@
 			}
 
 			.community-form {
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+
 				.bottom-container {
 					position: absolute;
 					bottom: 0.5rem;

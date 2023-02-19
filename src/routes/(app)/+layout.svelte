@@ -4,7 +4,7 @@
 	import Sidebar from './(layout)/Sidebar.svelte';
 	import '../app.scss';
 	import Registration from './(auth)/Registration.svelte';
-	import CreateCommunity from './(content)/CreateCommunity.svelte';
+	import CreateCommunity from './(content)/(community)/CreateCommunity.svelte';
 	import { user } from '$lib/stores.js';
 
 	export let data;
@@ -12,7 +12,7 @@
 </script>
 
 <Navbar />
-<Sidebar />
+<Sidebar communities={data.communities} />
 {#if $registrationOpen}
 	<Registration />
 {/if}

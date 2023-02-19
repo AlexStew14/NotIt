@@ -2,6 +2,7 @@
 	import { enhance } from '$app/forms';
 	import { registrationOpen } from '$lib/stores.js';
 
+	let formData;
 	let signUp = false;
 </script>
 
@@ -28,8 +29,9 @@
 			class="auth-form"
 			method="POST"
 			action={signUp ? '/?/signup' : '/?/login'}
-			use:enhance={({ form, data, action, cancel }) => {
+			use:enhance={() => {
 				return async ({ result, update }) => {
+					formData = result.data;
 					update();
 					if (result.type === 'success') {
 						$registrationOpen = false;

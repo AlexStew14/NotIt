@@ -51,3 +51,23 @@ export async function loginUser(email, password) {
 		return { error };
 	}
 }
+
+export async function getCommunities(id) {
+	try {
+		return await db.user.findUnique({
+			where: {
+				id
+			},
+			select: {
+				communities: {
+					select: {
+						name: true
+					}
+				}
+			}
+		});
+	} catch (error) {
+		console.log(error);
+		return { error };
+	}
+}

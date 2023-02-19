@@ -3,7 +3,7 @@ import { createPost } from '$lib/post.model.js';
 import { postSchema } from './schema.js';
 
 export const actions = {
-	default: async ({ request, locals }) => {
+	createPost: async ({ request, locals }) => {
 		if (!locals.user) {
 			return fail(401, { error: 'Unauthorized' });
 		}

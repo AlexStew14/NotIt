@@ -1,13 +1,17 @@
 import { fail, redirect } from '@sveltejs/kit';
 import { createUser, loginUser } from '$lib/user.model.js';
-import { createPost, getPosts, createVote, deleteVote } from '$lib/post.model.js';
+import { getPosts } from '$lib/post.model.js';
+import { createCommunity } from '$lib/community.model.js';
+import { communitySchema } from './(content)/(community)/schema.js';
+import { userSchema } from './schema.js';
+import { createVote, deleteVote } from '$lib/vote.model.js';
 
 export const load = async ({ locals, url }) => {
-	const { error, posts } = await getPosts();
+	const { error: postError, posts } = await getPosts();
 
-	if (error) {
-		console.log(error);
-		return fail(500, { error });
+	if (postError) {
+		console.log(postError);
+		return fail(500, { error: postError });
 	}
 
 	return { posts };
@@ -19,13 +23,15 @@ export const actions = {
 		throw redirect(302, '/');
 	},
 	login: async ({ cookies, request }) => {
-		const data = Object.fromEntries(await request.formData());
-		const { email, password } = data;
+		const formData = Object.fromEntries(await request.formData());
+		const userData = userSchema.safeParse(formData);
 
-		if (!email || !password) {
-			console.log('Missing email or password');
-			return { error: 'Missing email or password' };
+		if (!userData.success) {
+			const errors = userData.error.flatten().fieldErrors;
+			return fail(400, { error: errors });
 		}
+
+		const { email, password } = userData.data;
 
 		const { error, token } = await loginUser(email, password);
 
@@ -107,6 +113,30 @@ export const actions = {
 		}
 
 		const { error, post } = await deleteVote(postId, locals.user.id);
+
+		if (error) {
+			return fail(500, { error });
+		}
+
+		return { success: true };
+	},
+	createCommunity: async ({ request, locals }) => {
+		if (!locals.user) {
+			return fail(401, { error: 'Unauthorized' });
+		}
+
+		const formData = Object.fromEntries(await request.formData());
+		const communityData = communitySchema.safeParse(formData);
+
+		if (!communityData.success) {
+			const errors = communityData.error.flatten().fieldErrors;
+			console.log(errors);
+			return fail(400, { error: errors });
+		}
+
+		const { name, description } = communityData.data;
+
+		const { error, community } = await createCommunity(name, description, locals.user.id);
 
 		if (error) {
 			return fail(500, { error });

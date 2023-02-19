@@ -15,7 +15,7 @@
 			<button class="header-tab">Poll</button>
 			<button class="header-tab">Talk</button>
 		</div>
-		<form class="submit-form" method="POST" use:enhance>
+		<form class="submit-form" method="POST" action="?/createPost" use:enhance>
 			<CustomInput
 				error={form?.error?.title}
 				type="text"

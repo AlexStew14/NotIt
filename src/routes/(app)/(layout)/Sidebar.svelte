@@ -1,18 +1,25 @@
+<script>
+	export let communities;
+	communities = communities || [];
+</script>
+
 <div class="sidebar-container">
 	<div class="topics-container">
 		<div class="topic-container">
 			<p class="topic-header">FEEDS</p>
-			<div class="topics">
+			<div class="communities">
 				<p>Home</p>
 				<p>Popular</p>
 			</div>
 		</div>
 		<div class="topic-container">
-			<p class="topic-header">RECENT</p>
-			<div class="topics">
-				<p>r/sveltejs</p>
-				<p>r/reactjs</p>
-				<p>r/programmerhumor</p>
+			<p class="topic-header">MY COMMUNITIES</p>
+			<div class="communities">
+				{#each communities as community}
+					<a href={`/n/${community.name}`}>
+						<p>n/{community.name}</p>
+					</a>
+				{/each}
 			</div>
 		</div>
 	</div>
@@ -24,6 +31,7 @@
 		top: var(--navbar-height);
 		left: 0;
 		width: var(--sidebar-width);
+		box-sizing: border-box;
 		height: 100vh;
 		background-color: var(--surface1);
 		border-top: 1px solid var(--surface2);
@@ -42,7 +50,7 @@
 			}
 		}
 
-		.topics {
+		.communities {
 			p {
 				color: var(--text2);
 				font-size: var(--font-medium);

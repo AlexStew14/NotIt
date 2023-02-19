@@ -76,7 +76,7 @@
 	}
 
 	.left-padded {
-		padding-left: 1.25rem;
+		padding-left: 1.5rem;
 	}
 
 	.form-error {
