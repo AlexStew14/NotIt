@@ -6,12 +6,12 @@
 </script>
 
 <div class="page-container">
-	<div class="login-container">
+	<div class="auth-container">
 		<button class="exit-button" on:click={() => ($registrationOpen = false)}>X</button>
-		<div class="login-info">
-			<h3 class="login-title">{signUp ? 'Sign Up' : 'Log In'}</h3>
-			<p class="login-text">
-				By continuing, you agree are setting up a Reddit account and agree to our User Agreement and
+		<div class="auth-info">
+			<h3 class="auth-title">{signUp ? 'Sign Up' : 'Log In'}</h3>
+			<p class="auth-text">
+				By continuing, you agree are setting up a NotIt account and agree to our User Agreement and
 				Privacy Policy.
 			</p>
 		</div>
@@ -19,13 +19,13 @@
 			<div class="third-party-button">Continue with Google</div>
 			<div class="third-party-button">Continue with Apple</div>
 		</div>
-		<div class="login-spacer">
+		<div class="auth-spacer">
 			<span />
 			<p>OR</p>
 			<span />
 		</div>
 		<form
-			class="login-form"
+			class="auth-form"
 			method="POST"
 			action={signUp ? '/?/signup' : '/?/login'}
 			use:enhance={({ form, data, action, cancel }) => {
@@ -37,19 +37,19 @@
 				};
 			}}
 		>
-			<input class="login-input" name="email" type="email" placeholder="Email Address" />
-			<input class="login-input" name="password" type="password" placeholder="Password" />
-			<button class="login-button" type="submit">{signUp ? 'Sign Up' : 'Log in'}</button>
+			<input class="auth-input" name="email" type="email" placeholder="Email Address" />
+			<input class="auth-input" name="password" type="password" placeholder="Password" />
+			<button class="secondary-filled-button" type="submit">{signUp ? 'Sign Up' : 'Log in'}</button>
 		</form>
 		<div class="signup-info">
 			{#if signUp}
 				<p>
-					Already a Redditor?
+					Already a NotIt user?
 					<button class="link-text" on:click={() => (signUp = false)}>Log In</button>
 				</p>
 			{:else}
 				<p>
-					New to Reddit?
+					New to NotIt?
 					<button class="link-text" on:click={() => (signUp = true)}>Sign Up</button>
 				</p>
 			{/if}
@@ -69,11 +69,13 @@
 		position: fixed;
 		z-index: 9999;
 
-		.login-container {
-			height: 75vh;
-			width: 275px;
+		.auth-container {
+			box-sizing: border-box;
+			height: 95vh;
+			width: 400px;
 			position: fixed;
 			display: flex;
+			justify-content: center;
 			align-items: center;
 			background-color: var(--surface1);
 			border-radius: 0.75rem;
@@ -92,12 +94,12 @@
 				}
 			}
 
-			.login-info {
-				.login-title {
+			.auth-info {
+				.auth-title {
 					margin: 0 0 0.5rem;
 				}
 
-				.login-text {
+				.auth-text {
 					margin: 0;
 					font-size: var(--font-medium);
 				}
@@ -122,7 +124,7 @@
 				}
 			}
 
-			.login-spacer {
+			.auth-spacer {
 				width: 100%;
 				text-align: center;
 				display: flex;
@@ -141,38 +143,20 @@
 				}
 			}
 
-			.login-form {
+			.auth-form {
 				display: flex;
 				flex-direction: column;
-				gap: 0.5rem;
+				gap: 1rem;
 				width: 100%;
 
-				.login-input {
+				.auth-input {
 					border: 1px solid var(--surface3);
 					border-radius: 2rem;
 					transition: all 0.3s;
 					padding: 0.75rem;
-					margin-top: 0.5rem;
 
 					&:hover {
 						border: 1px solid var(--surface4);
-					}
-				}
-
-				.login-button {
-					color: white;
-					border: 1px solid var(--secondary1);
-					background-color: var(--secondary1);
-					font-weight: bold;
-					border-radius: 2rem;
-					transition: all 0.3s;
-					padding: 0.75rem;
-					margin-top: 0.5rem;
-					box-sizing: inherit;
-
-					&:hover {
-						border: 1px solid var(--secondary2);
-						background-color: var(--secondary2);
 					}
 				}
 			}

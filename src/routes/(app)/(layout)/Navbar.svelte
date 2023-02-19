@@ -1,24 +1,35 @@
 <script>
-	import { registrationOpen } from '$lib/stores.js';
+	import { registrationOpen, createCommunityOpen } from '$lib/stores.js';
 	import { enhance } from '$app/forms';
 	import { user } from '$lib/stores.js';
 </script>
 
 <div class="navbar-container">
 	<div class="navbar-inner-left">
-		<h3><a href="/">reddit</a></h3>
-		<div class="search-bar"><span>Search Reddit</span></div>
+		<h3><a href="/">NotIt</a></h3>
+		<div class="search-bar"><span>Search NotIt</span></div>
 	</div>
 	<div class="navbar-inner-right">
 		{#if $user}
-			<a href="/submit"><button class="filled-button">Post</button></a>
+			<button class="secondary-filled-button" on:click={() => ($createCommunityOpen = true)}
+				>Community</button
+			>
+			<a href="/submit">
+				<button class="primary-filled-button" style="width: 60px">Post</button>
+			</a>
 			<form method="POST" action="/?/logout" use:enhance>
-				<button class="outlined-button" type="submit">Log Out</button>
+				<button
+					class="primary-outlined-button"
+					type="submit"
+					on:click={() => ($createCommunityOpen = false)}>Log Out</button
+				>
 			</form>
 			<p>{$user.email}</p>
 		{:else}
-			<button class="outlined-button">Get App</button>
-			<button class="filled-button" on:click={() => ($registrationOpen = true)}>Log In</button>
+			<button class="primary-outlined-button">Get App</button>
+			<button class="primary-filled-button" on:click={() => ($registrationOpen = true)}
+				>Log In</button
+			>
 			<div class="profile" />
 		{/if}
 	</div>
@@ -68,34 +79,8 @@
 			justify-content: space-around;
 			text-align: center;
 			gap: 1rem;
-			width: 350px;
+			max-width: 500px;
 			padding-right: 3rem;
-
-			.outlined-button {
-				padding: 0.5rem 2rem;
-				border: 1px solid var(--primary1);
-				border-radius: 2rem;
-				color: var(--primary1);
-				width: 60px;
-
-				&:hover {
-					background-color: var(--surface2);
-					cursor: pointer;
-				}
-			}
-
-			.filled-button {
-				padding: 0.5rem 2rem;
-				background-color: var(--primary1);
-				border-radius: 2rem;
-				color: white;
-				width: 60px;
-
-				&:hover {
-					background-color: var(--primary2);
-					cursor: pointer;
-				}
-			}
 		}
 	}
 </style>

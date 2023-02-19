@@ -15,8 +15,21 @@ model User {
   email     String   @unique
   password  String
 
+  communities Community[]
+
   posts     Post[]
   votes     Vote[]
+  comments  Comment[]
+}
+
+model Community {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String   @unique
+
+  posts     Post[]
+  members User[]
 }
 
 model Post {
@@ -30,7 +43,11 @@ model Post {
   author    User     @relation(fields: [authorId], references: [id])
   authorId  String
 
+  community Community @relation(fields: [communityId], references: [id])
+  communityId String
+
   votes    Vote[]
+  comments Comment[]
 }
 
 model Vote {
@@ -45,4 +62,18 @@ model Vote {
   userId    String
 
   @@id([postId, userId])
+}
+
+model Comment {
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  content   String
+
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String
+
+  post      Post     @relation(fields: [postId], references: [id])
+  postId    String
+
+  @@id([authorId, postId])
 }

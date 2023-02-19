@@ -1,9 +1,10 @@
 <script>
-	import { registrationOpen } from '$lib/stores.js';
+	import { registrationOpen, createCommunityOpen } from '$lib/stores.js';
 	import Navbar from './(layout)/Navbar.svelte';
 	import Sidebar from './(layout)/Sidebar.svelte';
 	import '../app.scss';
 	import Registration from './(auth)/Registration.svelte';
+	import CreateCommunity from './(content)/CreateCommunity.svelte';
 	import { user } from '$lib/stores.js';
 
 	export let data;
@@ -14,6 +15,9 @@
 <Sidebar />
 {#if $registrationOpen}
 	<Registration />
+{/if}
+{#if $createCommunityOpen}
+	<CreateCommunity />
 {/if}
 <div class="slot-container">
 	<slot />

@@ -16,15 +16,21 @@
 			<button class="header-tab">Talk</button>
 		</div>
 		<form class="submit-form" method="POST" use:enhance>
-			<CustomInput error={form?.error?.title} type="text" name="title" placeholder="Title" />
+			<CustomInput
+				error={form?.error?.title}
+				type="text"
+				name="title"
+				placeholder="Title"
+				maxLength="80"
+			/>
 			<CustomInput
 				error={form?.error?.content}
 				type="textarea"
 				name="content"
-				placeholder="Text (optional"
+				placeholder="Text (optional)"
 			/>
 			<div class="submit-button-container">
-				<button class="submit-button" type="submit">Post</button>
+				<button class="primary-filled-button" type="submit">Post</button>
 			</div>
 		</form>
 	</div>
@@ -92,18 +98,6 @@
 					display: flex;
 					width: 100%;
 					justify-content: flex-end;
-
-					.submit-button {
-						font-weight: bold;
-						background-color: var(--primary1);
-						color: white;
-						border-radius: 1.5rem;
-						padding: 0.6rem 1rem;
-
-						&:hover {
-							background-color: var(--primary2);
-						}
-					}
 				}
 			}
 		}
