@@ -12,7 +12,7 @@
 </script>
 
 <Navbar />
-<Sidebar communities={data.communities} />
+<Sidebar communities={data?.communities || []} />
 {#if $registrationOpen}
 	<Registration />
 {/if}

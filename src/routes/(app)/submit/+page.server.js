@@ -16,9 +16,9 @@ export const actions = {
 			return fail(400, { error: errors });
 		}
 
-		const { title, content } = postData.data;
+		const { title, content, communityName } = postData.data;
 
-		const { error, post } = await createPost(title, content, locals.user.id);
+		const { error, post } = await createPost(title, content, locals.user.id, communityName);
 		if (error) {
 			return fail(500, { error });
 		}

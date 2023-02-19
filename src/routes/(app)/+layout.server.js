@@ -3,6 +3,7 @@ import { getCommunities } from '$lib/user.model.js';
 
 export const load = async ({ locals, url }) => {
 	const user = locals.user;
+
 	if (!user) {
 		if (url.pathname === '/submit') {
 			throw redirect(302, '/');

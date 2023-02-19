@@ -1,12 +1,13 @@
 import db from '$lib/db.js';
 
-export async function createPost(title, content, authorId) {
+export async function createPost(title, content, authorId, communityName) {
 	try {
 		const post = await db.post.create({
 			data: {
 				title,
 				content,
-				authorId
+				authorId,
+				communityName
 			}
 		});
 		return { post };

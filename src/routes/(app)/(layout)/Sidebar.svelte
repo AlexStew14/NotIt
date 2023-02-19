@@ -1,6 +1,5 @@
 <script>
 	export let communities;
-	communities = communities || [];
 </script>
 
 <div class="sidebar-container">

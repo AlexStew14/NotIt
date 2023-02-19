@@ -1,7 +1,7 @@
 <script>
 	import UserPost from './(content)/UserPost.svelte';
 	export let data;
-	let posts = [];
+	let posts;
 	$: ({ posts } = data);
 </script>
 

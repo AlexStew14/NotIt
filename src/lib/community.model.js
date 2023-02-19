@@ -49,8 +49,7 @@ export async function getCommunity(name) {
 		});
 		community.memberCount = community._count.members;
 		delete community._count;
-		console.log(community);
-		return community;
+		return { community };
 	} catch (error) {
 		console.log(error);
 		return { error };
