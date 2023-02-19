@@ -30,7 +30,6 @@
 		top: var(--navbar-height);
 		left: 0;
 		width: var(--sidebar-width);
-		box-sizing: border-box;
 		height: 100vh;
 		background-color: var(--surface1);
 		border-top: 1px solid var(--surface2);

@@ -62,7 +62,6 @@
 		padding: 0.75rem;
 		caret-color: var(--primary1);
 		font-family: inherit;
-		box-sizing: border-box;
 		width: 100%;
 
 		&::placeholder {

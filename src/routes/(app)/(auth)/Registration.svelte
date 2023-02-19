@@ -72,7 +72,6 @@
 		z-index: 9999;
 
 		.auth-container {
-			box-sizing: border-box;
 			height: 95vh;
 			width: 400px;
 			position: fixed;

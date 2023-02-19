@@ -1,3 +1,35 @@
+// CSS RESETS
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  line-height: 1.5;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+// END RESETS
+
 html {
   --primary-hue: 206;
   --primary-saturation: 100%;
@@ -39,9 +71,6 @@ html {
   background-color: var(--surface4);
 }
 
-body {
-  margin: 0;
-}
 
 a {
     color: inherit;
@@ -49,7 +78,6 @@ a {
 }
 
 button {
-  box-sizing: inherit;
   border: inherit;
   background-color: inherit;
   color: inherit;
@@ -60,7 +88,7 @@ button {
 }
 
 @mixin custom-button {
-  padding: 0.5rem 1rem;
+  padding: .25rem 1rem;
   border-radius: 1rem;
   font-weight: bold;
   transition: background-color 0.2s ease-in-out;

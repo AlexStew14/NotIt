@@ -65,7 +65,6 @@
 		z-index: 9999;
 
 		.community-container {
-			box-sizing: border-box;
 			height: 80vh;
 			width: 500px;
 			position: fixed;

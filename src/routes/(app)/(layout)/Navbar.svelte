@@ -15,7 +15,7 @@
 				>Community</button
 			>
 			<a href="/submit">
-				<button class="primary-filled-button" style="width: 60px">Post</button>
+				<button class="primary-filled-button">Post</button>
 			</a>
 			<form method="POST" action="/?/logout" use:enhance>
 				<button
