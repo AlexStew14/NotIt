@@ -65,6 +65,7 @@ model Vote {
 }
 
 model Comment {
+  id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   content   String
@@ -74,6 +75,4 @@ model Comment {
 
   post   Post   @relation(fields: [postId], references: [id])
   postId String
-
-  @@id([authorId, postId])
 }

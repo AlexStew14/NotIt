@@ -35,7 +35,8 @@ export async function getPosts() {
 						id: true,
 						email: true
 					}
-				}
+				},
+				communityName: true
 			}
 		});
 
@@ -48,6 +49,55 @@ export async function getPosts() {
 		});
 
 		return { posts };
+	} catch (error) {
+		console.log(error);
+		return { error };
+	}
+}
+
+export async function getPost(id) {
+	try {
+		let post = await db.post.findUnique({
+			where: {
+				id
+			},
+			select: {
+				id: true,
+				title: true,
+				content: true,
+				createdAt: true,
+				author: {
+					select: {
+						email: true
+					}
+				},
+				communityName: true,
+				votes: {
+					select: {
+						value: true
+					}
+				},
+				comments: {
+					select: {
+						id: true,
+						content: true,
+						createdAt: true,
+						author: {
+							select: {
+								email: true
+							}
+						}
+					}
+				}
+			}
+		});
+		const totalVotes = post.votes.reduce((total, vote) => {
+			return total + vote.value;
+		}, 0);
+		delete post.votes;
+		post = { ...post, totalVotes };
+
+		return { post };
 	} catch (error) {
 		console.log(error);
 		return { error };

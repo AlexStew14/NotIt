@@ -1,4 +1,6 @@
 <script>
+	import UserPost from '../../(content)/UserPost.svelte';
+
 	export let data;
 </script>
 
@@ -11,9 +13,15 @@
 			{data.community.description}
 		</p>
 		<div class="posts-container">
-			{#each data.community.posts as post}
-				<h3>{post.title}</h3>
-				<h3>{post.content}</h3>
+			{#each data.community.posts as { content, title, author, id, totalVotes }}
+				<UserPost
+					{content}
+					{title}
+					email={author.email}
+					{id}
+					{totalVotes}
+					communityName={data.community.name}
+				/>
 			{/each}
 		</div>
 	</div>
@@ -22,5 +30,11 @@
 <style lang="scss">
 	.community-container {
 		padding: 0.5rem 1rem;
+
+		.posts-container {
+			padding: 2rem 0;
+			margin: 0 auto;
+			max-width: 40rem;
+		}
 	}
 </style>

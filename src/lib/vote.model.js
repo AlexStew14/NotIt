@@ -36,8 +36,7 @@ export async function deleteVote(postId, userId) {
 				}
 			}
 		});
-
-		return { success: true };
+		return {};
 	} catch (error) {
 		console.log(error);
 		return { error };

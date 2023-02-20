@@ -6,14 +6,8 @@
 </script>
 
 <div class="posts-container">
-	{#each posts as post}
-		<UserPost
-			title={post.title}
-			content={post.content}
-			id={post.id}
-			totalVotes={post.totalVotes}
-			email={post.author.email}
-		/>
+	{#each posts as { communityName, content, id, totalVotes, author, title }}
+		<UserPost {communityName} {title} {content} {id} {totalVotes} email={author.email} />
 	{/each}
 </div>
 

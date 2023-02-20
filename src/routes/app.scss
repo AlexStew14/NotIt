@@ -27,7 +27,6 @@ input, button, textarea, select {
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
-
 // END RESETS
 
 html {
@@ -50,6 +49,7 @@ html {
   --surface2: hsl(0, 0%, 96%);
   --surface3: hsl(0, 0%, 88%);
   --surface4: hsl(var(--primary-hue), calc(var(--primary-saturation) / 5), 88%);
+  --surface5: hsl(var(--primary-hue), calc(var(--primary-saturation) / 10), 20%);
   --text1: hsl(0, 0%, 5%);
   --text2: hsl(0, 0%, 25%);
   --text3: hsl(0, 0%, 50%);
@@ -92,6 +92,10 @@ button {
   border-radius: 1rem;
   font-weight: bold;
   transition: background-color 0.2s ease-in-out;
+
+  &:focus-visible {
+    outline: 1px solid var(--text1)
+  }
 }
 
 .primary-filled-button {

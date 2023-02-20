@@ -14,6 +14,7 @@ export const load = async ({ locals, url }) => {
 		return fail(500, { error: postError });
 	}
 
+	console.log(posts);
 	return { posts };
 };
 
@@ -92,7 +93,7 @@ export const actions = {
 			return fail(400, { error: 'Missing postId' });
 		}
 
-		const { error, post } = await createVote(postId, locals.user.id, parseInt(value));
+		const { error, vote } = await createVote(postId, locals.user.id, parseInt(value));
 
 		if (error) {
 			return fail(500, { error });
@@ -112,7 +113,7 @@ export const actions = {
 			return fail(400, { error: 'Missing postId' });
 		}
 
-		const { error, post } = await deleteVote(postId, locals.user.id);
+		const { error } = await deleteVote(postId, locals.user.id);
 
 		if (error) {
 			return fail(500, { error });

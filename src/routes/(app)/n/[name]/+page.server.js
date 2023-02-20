@@ -11,5 +11,6 @@ export const load = async ({ locals, url, params }) => {
 			}
 		};
 	}
+
 	return { community };
 };

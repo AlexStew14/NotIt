@@ -46,6 +46,7 @@
 		display: flex;
 		padding: var(--content-padding);
 		gap: 1rem;
+		z-index: 2;
 
 		.navbar-inner-left {
 			display: flex;

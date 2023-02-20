@@ -37,7 +37,17 @@ export async function getCommunity(name) {
 					select: {
 						id: true,
 						title: true,
-						content: true
+						content: true,
+						votes: {
+							select: {
+								value: true
+							}
+						},
+						author: {
+							select: {
+								email: true
+							}
+						}
 					}
 				},
 				_count: {
@@ -49,6 +59,15 @@ export async function getCommunity(name) {
 		});
 		community.memberCount = community._count.members;
 		delete community._count;
+
+		community.posts = community.posts.map((post) => {
+			const totalVotes = post.votes.reduce((total, vote) => {
+				return total + vote.value;
+			}, 0);
+			delete post.votes;
+			return { ...post, totalVotes };
+		});
+
 		return { community };
 	} catch (error) {
 		console.log(error);

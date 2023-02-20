@@ -55,8 +55,8 @@
 <style lang="scss">
 	.page-container {
 		top: var(--navbar-height);
-		width: 100vw;
-		height: calc(100vh - var(--navbar-height));
+		width: 100%;
+		height: calc(100% - var(--navbar-height));
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -65,7 +65,7 @@
 		z-index: 9999;
 
 		.community-container {
-			height: 80vh;
+			height: 80%;
 			width: 500px;
 			position: fixed;
 			background-color: var(--surface1);
