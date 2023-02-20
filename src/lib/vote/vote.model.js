@@ -26,7 +26,7 @@ export async function createVote(postId, userId, value) {
 	}
 }
 
-export async function deleteVote(postId, userId) {
+export async function removeVote(postId, userId) {
 	try {
 		await db.vote.delete({
 			where: {

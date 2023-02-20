@@ -18,7 +18,7 @@
 	<div class="sidebar-container">
 		<div class="interaction-container">
 			{#if $user && postVoteValue !== 1}
-				<form method="POST" action="/?/createVote" use:enhance>
+				<form method="POST" action="/?/postVote" use:enhance>
 					<input name="postId" value={id} type="hidden" />
 					<input name="value" value={1} type="hidden" />
 					<button class="up-button" type="submit" />
@@ -37,7 +37,7 @@
 				</p>
 			{/if}
 			{#if $user && postVoteValue !== -1}
-				<form method="POST" action="/?/createVote" use:enhance>
+				<form method="POST" action="/?/postVote" use:enhance>
 					<input name="postId" value={id} type="hidden" />
 					<input name="value" value={-1} type="hidden" />
 					<button class="down-button" type="submit" />

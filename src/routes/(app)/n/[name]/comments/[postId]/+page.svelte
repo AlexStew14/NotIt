@@ -2,10 +2,8 @@
 	import UserPost from '../../../../(content)/UserPost.svelte';
 	export let data;
 
-	let post, id, title, content, author, communityName, comments, totalVotes;
 	$: ({ post } = data);
 	$: ({ id, title, content, author, communityName, comments, totalVotes } = post);
-	console.log(data);
 </script>
 
 {#if post}

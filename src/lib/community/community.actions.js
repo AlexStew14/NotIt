@@ -1,5 +1,5 @@
 import { fail } from '@sveltejs/kit';
-import { communitySchema } from '$lib/community/community.schema.js';
+import { communitySerializers } from '$lib/community/community.serializers.js';
 import { createCommunity } from '$lib/community/community.model.js';
 
 export const postCommunity = async ({ request, locals }) => {
@@ -8,7 +8,7 @@ export const postCommunity = async ({ request, locals }) => {
 	}
 
 	const formData = Object.fromEntries(await request.formData());
-	const communityData = communitySchema.safeParse(formData);
+	const communityData = communitySerializers.safeParse(formData);
 
 	if (!communityData.success) {
 		const errors = communityData.error.flatten().fieldErrors;
