@@ -61,19 +61,20 @@
 		padding: 0 2rem;
 
 		.post-form {
-			max-width: 46rem;
-			margin: 5rem auto 0;
 			display: flex;
 			flex-direction: column;
 			gap: 0.5rem;
+
+			max-width: 46rem;
+			margin: 5rem auto 0;
 
 			.post-title {
 				font-weight: normal;
 			}
 
 			.line {
-				border-top: 1px solid var(--surface2);
 				margin-bottom: 1rem;
+				border-top: 1px solid var(--surface2);
 			}
 
 			.communities-select {
@@ -81,24 +82,27 @@
 			}
 
 			.post-container {
-				background-color: var(--surface1);
-				border-radius: 0.25rem;
 				overflow: hidden;
 				gap: 0.5rem;
+				background-color: var(--surface1);
+				border-radius: 0.25rem;
 
 				.post-header {
 					display: flex;
-					justify-content: space-around;
 					align-items: center;
+					justify-content: space-around;
 
 					.header-tab {
-						white-space: nowrap;
+						flex: 1;
+
+						height: 100%;
+						padding: 1rem;
+
 						font-weight: bold;
 						color: var(--text3);
 						text-align: center;
-						height: 100%;
-						padding: 1rem;
-						flex: 1;
+						white-space: nowrap;
+
 						border-right: 1px solid var(--surface3);
 						border-bottom: 1px solid var(--surface3);
 
@@ -118,16 +122,16 @@
 				}
 
 				.post-inner {
-					padding: 1rem;
 					display: flex;
 					flex-direction: column;
 					gap: 0.5rem;
+					padding: 1rem;
 
 					.submit-button-container {
-						margin-top: 0.5rem;
 						display: flex;
-						width: 100%;
 						justify-content: flex-end;
+						width: 100%;
+						margin-top: 0.5rem;
 					}
 				}
 			}

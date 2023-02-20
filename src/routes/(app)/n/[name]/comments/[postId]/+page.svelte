@@ -29,13 +29,15 @@
 
 <style lang="scss">
 	.page-container {
-		top: var(--navbar-height);
-		left: var(--sidebar-width);
-		width: calc(100% - var(--sidebar-width));
 		position: fixed;
 		z-index: 3;
-		background-color: var(--surface5);
+		top: var(--navbar-height);
+		left: var(--sidebar-width);
+
+		width: calc(100% - var(--sidebar-width));
 		min-height: calc(100vh - var(--navbar-height));
+
+		background-color: var(--surface5);
 
 		.content-container {
 			max-width: 65rem;
@@ -43,13 +45,15 @@
 			background-color: var(--surface4);
 
 			.header-container {
-				width: 100%;
-				height: 3rem;
-				background-color: #000000;
 				display: flex;
 				align-items: center;
 				justify-content: flex-end;
+
+				width: 100%;
+				height: 3rem;
 				padding: 0 4.5rem;
+
+				background-color: #000000;
 
 				.close {
 					color: var(--surface1);
@@ -60,9 +64,9 @@
 			}
 
 			.post-container {
+				overflow-y: scroll;
 				max-height: 90vh;
 				padding: 2rem 4rem 4rem;
-				overflow-y: scroll;
 			}
 		}
 	}

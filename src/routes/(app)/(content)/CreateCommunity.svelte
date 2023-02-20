@@ -55,29 +55,34 @@
 
 <style lang="scss">
 	.page-container {
-		top: var(--navbar-height);
-		width: 100%;
-		height: calc(100% - var(--navbar-height));
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background-color: rgba(0, 0, 0, 0.8);
 		position: fixed;
 		z-index: 9999;
+		top: var(--navbar-height);
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		width: 100%;
+		height: calc(100% - var(--navbar-height));
+
+		background-color: rgba(0, 0, 0, 0.8);
 
 		.community-container {
-			max-height: 80%;
-			width: 500px;
 			position: fixed;
-			background-color: var(--surface1);
-			border-radius: 0.5rem;
+
+			width: 500px;
+			max-height: 80%;
 			padding: 1rem;
 
+			background-color: var(--surface1);
+			border-radius: 0.5rem;
+
 			.exit-button {
-				color: var(--text3);
 				position: absolute;
-				right: 1rem;
 				top: 1rem;
+				right: 1rem;
+				color: var(--text3);
 
 				&:hover {
 					cursor: pointer;
@@ -96,10 +101,10 @@
 			}
 
 			.info-text {
-				font-size: var(--font-small);
-				color: var(--text3);
 				margin-top: 0.5rem;
 				padding: 0;
+				font-size: var(--font-small);
+				color: var(--text3);
 			}
 
 			.community-form {
@@ -109,8 +114,8 @@
 
 				.bottom-container {
 					display: flex;
-					justify-content: flex-end;
 					gap: 0.5rem;
+					justify-content: flex-end;
 				}
 			}
 		}

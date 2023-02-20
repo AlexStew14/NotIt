@@ -51,19 +51,21 @@
 		.length-text {
 			position: absolute;
 			right: 0.5rem;
-			color: var(--text3);
 			font-size: var(--font-medium);
+			color: var(--text3);
 		}
 	}
 
 	.custom-input {
-		outline: 1px solid var(--surface3);
+		width: 100%;
+		padding: 0.75rem;
+
+		font-family: inherit;
+
 		border: none;
 		border-radius: 2px;
-		padding: 0.75rem;
+		outline: 1px solid var(--surface3);
 		caret-color: var(--primary1);
-		font-family: inherit;
-		width: 100%;
 
 		&::placeholder {
 			color: var(--text3);
@@ -80,8 +82,8 @@
 	}
 
 	.form-error {
-		color: #ff0000;
 		margin: 0;
 		font-size: var(--font-medium);
+		color: #ff0000;
 	}
 </style>

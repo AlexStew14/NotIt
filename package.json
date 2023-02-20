@@ -6,9 +6,8 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"lint": "prettier --plugin-search-dir . --check . && eslint .",
-		"lint:scss": "stylelint 'src/**/*.{css,scss,svelte}'",
-		"format": "prettier --plugin-search-dir . --write ."
+		"fix": "prettier --plugin-search-dir . --write . && eslint . --fix",
+		"lint:scss": "stylelint 'src/**/*.{css,scss,svelte}' --fix"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
@@ -16,6 +15,7 @@
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
+		"eslint-plugin-unused-imports": "^2.0.0",
 		"postcss": "^8.4.21",
 		"postcss-html": "^1.5.0",
 		"prettier": "^2.8.0",
@@ -23,6 +23,7 @@
 		"prisma": "^4.10.1",
 		"sass": "^1.58.1",
 		"stylelint": "^15.2.0",
+		"stylelint-config-clean-order": "^5.0.0",
 		"stylelint-config-recommended-scss": "^9.0.1",
 		"stylelint-config-standard": "^30.0.1",
 		"stylelint-scss": "^4.4.0",

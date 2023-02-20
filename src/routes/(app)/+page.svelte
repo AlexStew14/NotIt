@@ -13,11 +13,12 @@
 
 <style lang="scss">
 	.posts-container {
-		padding: 2rem 0;
-		margin: 0 auto;
-		max-width: 40rem;
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
+
+		max-width: 40rem;
+		margin: 0 auto;
+		padding: 2rem 0;
 	}
 </style>

@@ -61,12 +61,14 @@
 
 <style lang="scss">
 	.post-container {
+		overflow-y: hidden;
+		display: flex;
+
+		max-height: 22rem;
+
 		background-color: var(--surface1);
 		border: 1px solid var(--surface3);
 		border-radius: 0.25rem;
-		display: flex;
-		max-height: 22rem;
-		overflow-y: hidden;
 
 		.sidebar-container {
 			min-width: 2.5rem;
@@ -102,14 +104,15 @@
 		}
 
 		.post-inner {
-			padding: 0.5rem;
 			display: block;
+			padding: 0.5rem;
+
 			-webkit-mask-image: linear-gradient(180deg, #000 14rem, transparent);
 
 			.post-topline {
 				display: flex;
-				align-items: center;
 				gap: 0.5rem;
+				align-items: center;
 
 				.post-author {
 					font-size: var(--font-medium);

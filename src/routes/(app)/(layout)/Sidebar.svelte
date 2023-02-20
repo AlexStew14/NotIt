@@ -16,22 +16,24 @@
 <style lang="scss">
 	.sidebar-container {
 		position: fixed;
+		z-index: 2;
 		top: var(--navbar-height);
 		left: 0;
+
 		width: var(--sidebar-width);
 		height: 100%;
+		padding: var(--content-padding);
+		padding-top: 0.5rem;
+
 		background-color: var(--surface1);
 		border-top: 1px solid var(--surface2);
 		border-right: 1px solid var(--surface2);
-		padding: var(--content-padding);
-		padding-top: 0.5rem;
-		z-index: 2;
 
 		.topic-header {
+			margin-bottom: 0.5rem;
 			font-size: var(--font-small);
 			font-weight: var(--font-weight-small);
 			color: var(--text3);
-			margin-bottom: 0.5rem;
 		}
 
 		.communities {
@@ -40,9 +42,9 @@
 			gap: 0.25rem;
 
 			p {
-				color: var(--text2);
 				font-size: var(--font-medium);
 				font-weight: var(--font-weight-medium);
+				color: var(--text2);
 
 				&:hover {
 					color: var(--text3);

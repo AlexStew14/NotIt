@@ -61,34 +61,40 @@
 
 <style lang="scss">
 	.page-container {
-		top: 0;
-		width: 100%;
-		height: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background-color: rgba(0, 0, 0, 0.4);
 		position: fixed;
 		z-index: 9999;
+		top: 0;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		width: 100%;
+		height: 100%;
+
+		background-color: rgba(0, 0, 0, 0.4);
 
 		.auth-container {
-			max-height: 95%;
-			width: 400px;
 			position: fixed;
+
 			display: flex;
-			justify-content: center;
-			align-items: center;
-			background-color: var(--surface1);
-			border-radius: 0.75rem;
-			padding: 3.5rem;
 			flex-direction: column;
 			gap: 1rem;
+			align-items: center;
+			justify-content: center;
+
+			width: 400px;
+			max-height: 95%;
+			padding: 3.5rem;
+
+			background-color: var(--surface1);
+			border-radius: 0.75rem;
 
 			.exit-button {
-				color: var(--text3);
 				position: absolute;
-				right: 1rem;
 				top: 1rem;
+				right: 1rem;
+				color: var(--text3);
 
 				&:hover {
 					cursor: pointer;
@@ -107,15 +113,17 @@
 			}
 
 			.third-party-buttons {
-				text-align: center;
 				width: 100%;
+				text-align: center;
 
 				.third-party-button {
+					margin-top: 0.5rem;
+					padding: 0.5rem;
+
 					border: 1px solid var(--surface3);
 					border-radius: 1rem;
+
 					transition: all 0.3s;
-					padding: 0.5rem;
-					margin-top: 0.5rem;
 
 					&:hover {
 						cursor: pointer;
@@ -126,15 +134,17 @@
 			}
 
 			.auth-spacer {
-				width: 100%;
-				text-align: center;
 				display: flex;
-				align-items: center;
 				gap: 1rem;
+				align-items: center;
+
+				width: 100%;
+
+				text-align: center;
 
 				span {
-					border-top: 1px solid var(--surface3);
 					flex: 1;
+					border-top: 1px solid var(--surface3);
 				}
 
 				p {
@@ -151,10 +161,10 @@
 				width: 100%;
 
 				.auth-input {
+					padding: 0.75rem;
 					border: 1px solid var(--surface3);
 					border-radius: 2rem;
 					transition: all 0.3s;
-					padding: 0.75rem;
 
 					&:hover {
 						border: 1px solid var(--surface4);
@@ -168,8 +178,8 @@
 				}
 
 				.link-text {
-					text-decoration: underline;
 					color: var(--primary1);
+					text-decoration: underline;
 
 					&:hover {
 						cursor: pointer;

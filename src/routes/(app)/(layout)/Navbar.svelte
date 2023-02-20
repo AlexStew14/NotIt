@@ -37,51 +37,59 @@
 
 <style lang="scss">
 	.navbar-container {
-		top: 0;
 		position: fixed;
+		z-index: 2;
+		top: 0;
+
+		display: flex;
+		gap: 1rem;
+
 		width: 100%;
 		height: var(--navbar-height);
+		padding: var(--content-padding);
+
 		background-color: var(--surface1);
 		border-bottom: 1px solid var(--surface2);
-		display: flex;
-		padding: var(--content-padding);
-		gap: 1rem;
-		z-index: 2;
 
 		.navbar-inner-left {
 			display: flex;
-			align-items: center;
 			flex-grow: 1;
 			gap: 10rem;
+			align-items: center;
 
 			.search-bar {
-				background-color: var(--surface2);
-				border-radius: 2rem;
+				flex-grow: 1;
+
+				min-width: 140px;
+				max-width: 700px;
+				margin: 0 auto;
 				padding: 0.75rem 2rem;
-				color: var(--text3);
+
 				font-size: var(--font-medium);
 				font-weight: var(--font-weight-medium);
+				color: var(--text3);
+
+				background-color: var(--surface2);
 				border: 1px solid var(--surface3);
-				flex-grow: 1;
-				margin: 0 auto;
-				max-width: 700px;
-				min-width: 140px;
+				border-radius: 2rem;
 
 				&:hover {
-					border: 1px solid var(--primary1);
 					background-color: var(--surface1);
+					border: 1px solid var(--primary1);
 				}
 			}
 		}
 
 		.navbar-inner-right {
-			align-items: center;
 			display: flex;
-			justify-content: space-around;
-			text-align: center;
 			gap: 1rem;
+			align-items: center;
+			justify-content: space-around;
+
 			max-width: 500px;
 			padding-right: 3rem;
+
+			text-align: center;
 		}
 	}
 </style>

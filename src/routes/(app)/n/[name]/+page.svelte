@@ -32,9 +32,9 @@
 		padding: 0.5rem 1rem;
 
 		.posts-container {
-			padding: 2rem 0;
-			margin: 0 auto;
 			max-width: 40rem;
+			margin: 0 auto;
+			padding: 2rem 0;
 		}
 	}
 </style>
