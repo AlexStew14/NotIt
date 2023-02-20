@@ -1,14 +1,27 @@
 <script>
+	import { enhance } from '$app/forms';
 	import UserPost from '../../(content)/UserPost.svelte';
 
 	export let data;
+	$: inCommunity = data?.communities.includes(data?.community?.name);
+	$: console.log(inCommunity);
+	$: console.log(data);
 </script>
 
 {#if data?.community}
 	<div class="community-container">
-		<h2>
-			{data.community.name}
-		</h2>
+		<div class="community-topline">
+			<h2>
+				{data.community.name}
+			</h2>
+			<form action={inCommunity ? '?/leaveCommunity' : '?/joinCommunity'} method="POST" use:enhance>
+				<input type="hidden" name="name" value={data.community.name} />
+				<button
+					class={inCommunity ? 'secondary-filled-button' : 'primary-filled-button'}
+					type="submit">{inCommunity ? 'Joined' : 'Join'}</button
+				>
+			</form>
+		</div>
 		<p>
 			{data.community.description}
 		</p>
@@ -30,6 +43,11 @@
 <style lang="scss">
 	.community-container {
 		padding: 0.5rem 1rem;
+
+		.community-topline {
+			display: flex;
+			gap: 1rem;
+		}
 
 		.posts-container {
 			max-width: 40rem;

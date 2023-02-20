@@ -1,6 +1,6 @@
 import db from '$lib/db.js';
 
-export async function createVote(postId, userId, value) {
+export async function create_vote(postId, userId, value) {
 	try {
 		const vote = await db.vote.upsert({
 			where: {
@@ -26,7 +26,7 @@ export async function createVote(postId, userId, value) {
 	}
 }
 
-export async function removeVote(postId, userId) {
+export async function delete_vote(postId, userId) {
 	try {
 		await db.vote.delete({
 			where: {

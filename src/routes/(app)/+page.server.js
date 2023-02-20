@@ -1,11 +1,11 @@
 import { fail } from '@sveltejs/kit';
-import { getPosts } from '$lib/post/post.model.js';
-import { postCommunity } from '$lib/community/community.actions.js';
-import { deleteVote, postVote } from '$lib/vote/vote.actions.js';
+import { get_posts } from '$lib/post/post.model.js';
+import { createCommunity } from '$lib/community/community.actions.js';
+import { deleteVote, createVote } from '$lib/vote/vote.actions.js';
 import { login, logout, signup } from '$lib/user/user.actions.js';
 
 export const load = async ({ locals, url }) => {
-	const { error: postError, posts } = await getPosts();
+	const { error: postError, posts } = await get_posts();
 
 	if (postError) {
 		console.log(postError);
@@ -20,7 +20,7 @@ export const actions = {
 	login,
 	logout,
 	signup,
-	postVote,
+	createVote,
 	deleteVote,
-	postCommunity
+	createCommunity
 };

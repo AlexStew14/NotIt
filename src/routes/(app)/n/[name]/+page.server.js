@@ -1,8 +1,9 @@
-import { getCommunity } from '$lib/community/community.model.js';
+import { get_community } from '$lib/community/community.model.js';
+import { joinCommunity, leaveCommunity } from '$lib/community/community.actions.js';
 
 export const load = async ({ locals, url, params }) => {
 	const { name } = params;
-	const { error, community } = await getCommunity(name);
+	const { error, community } = await get_community(name);
 	if (error) {
 		return {
 			status: 404,
@@ -13,4 +14,9 @@ export const load = async ({ locals, url, params }) => {
 	}
 
 	return { community };
+};
+
+export const actions = {
+	joinCommunity,
+	leaveCommunity
 };

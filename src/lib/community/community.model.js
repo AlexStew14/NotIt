@@ -1,6 +1,6 @@
 import db from '$lib/db.js';
 
-export async function createCommunity(name, description, userId) {
+export async function create_community(name, description, userId) {
 	try {
 		const community = await db.community.create({
 			data: {
@@ -24,7 +24,7 @@ export async function createCommunity(name, description, userId) {
 	}
 }
 
-export async function getCommunity(name) {
+export async function get_community(name) {
 	try {
 		let community = await db.community.findUnique({
 			where: {
@@ -69,6 +69,48 @@ export async function getCommunity(name) {
 		});
 
 		return { community };
+	} catch (error) {
+		console.log(error);
+		return { error };
+	}
+}
+
+export async function join_community(name, userId) {
+	try {
+		await db.community.update({
+			where: {
+				name
+			},
+			data: {
+				members: {
+					connect: {
+						id: userId
+					}
+				}
+			}
+		});
+		return {};
+	} catch (error) {
+		console.log(error);
+		return { error };
+	}
+}
+
+export async function leave_community(name, userId) {
+	try {
+		await db.community.update({
+			where: {
+				name
+			},
+			data: {
+				members: {
+					disconnect: {
+						id: userId
+					}
+				}
+			}
+		});
+		return {};
 	} catch (error) {
 		console.log(error);
 		return { error };

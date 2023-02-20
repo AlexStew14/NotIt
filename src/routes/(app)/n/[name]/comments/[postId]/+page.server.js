@@ -1,8 +1,9 @@
-import { getPost } from '$lib/post/post.model.js';
+import { get_post } from '$lib/post/post.model.js';
+import { postComment } from '$lib/comment/comment.actions.js';
 
 export const load = async ({ locals, url, params }) => {
 	const { postId } = params;
-	const { error, post } = await getPost(postId);
+	const { error, post } = await get_post(postId);
 	if (error) {
 		return {
 			status: 404,
@@ -12,4 +13,8 @@ export const load = async ({ locals, url, params }) => {
 		};
 	}
 	return { post };
+};
+
+export const actions = {
+	postComment
 };

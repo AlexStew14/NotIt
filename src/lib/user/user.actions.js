@@ -1,6 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit';
-import { userSerializers } from '$lib/user/user.serializers.js';
-import { createUser, loginUser } from '$lib/user/user.model.js';
+import { userSerializer } from '$lib/user/user.serializers.js';
+import { create_user, login_user } from '$lib/user/user.model.js';
 
 export const logout = async ({ cookies }) => {
 	cookies.delete('AuthorizationToken');
@@ -9,7 +9,7 @@ export const logout = async ({ cookies }) => {
 
 export const login = async ({ cookies, request }) => {
 	const formData = Object.fromEntries(await request.formData());
-	const userData = userSerializers.safeParse(formData);
+	const userData = userSerializer.safeParse(formData);
 
 	if (!userData.success) {
 		const errors = userData.error.flatten().fieldErrors;
@@ -18,7 +18,7 @@ export const login = async ({ cookies, request }) => {
 
 	const { email, password } = userData.data;
 
-	const { error, token } = await loginUser(email, password);
+	const { error, token } = await login_user(email, password);
 
 	if (error) {
 		console.log(error);
@@ -49,7 +49,7 @@ export const signup = async ({ cookies, request }) => {
 	}
 
 	// Create a new user
-	const { error, token } = await createUser(email, password);
+	const { error, token } = await create_user(email, password);
 
 	if (error) {
 		console.log(error);

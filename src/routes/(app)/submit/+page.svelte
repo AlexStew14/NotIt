@@ -10,7 +10,7 @@
 
 {#if communities}
 	<div class="page-container">
-		<form class="post-form" method="POST" action="?/postPost" use:enhance>
+		<form class="post-form" method="POST" action="?/createPost" use:enhance>
 			<h3 class="post-title">Create a post</h3>
 			<div class="line" />
 			<input

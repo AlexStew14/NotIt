@@ -18,7 +18,7 @@
 		<form
 			class="community-form"
 			method="POST"
-			action="/?/postCommunity"
+			action="/?/createCommunity"
 			use:enhance={() => {
 				return async ({ result, update }) => {
 					formData = result.data;

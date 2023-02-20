@@ -3,7 +3,7 @@ import db from '$lib/db.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-export async function createUser(email, password) {
+export async function create_user(email, password) {
 	try {
 		const user = await db.user.create({
 			data: {
@@ -23,7 +23,7 @@ export async function createUser(email, password) {
 	}
 }
 
-export async function loginUser(email, password) {
+export async function login_user(email, password) {
 	try {
 		const user = await db.user.findUnique({
 			where: {
@@ -52,9 +52,9 @@ export async function loginUser(email, password) {
 	}
 }
 
-export async function getCommunities(id) {
+export async function get_user_communities(id) {
 	try {
-		return await db.user.findUnique({
+		let communities = await db.user.findUnique({
 			where: {
 				id
 			},
@@ -66,6 +66,8 @@ export async function getCommunities(id) {
 				}
 			}
 		});
+		communities = communities.communities.map((community) => community.name);
+		return { communities };
 	} catch (error) {
 		console.log(error);
 		return { error };

@@ -1,7 +1,7 @@
 import { fail } from '@sveltejs/kit';
-import { createVote, removeVote } from '$lib/vote/vote.model.js';
+import { create_vote, delete_vote } from '$lib/vote/vote.model.js';
 
-export const postVote = async ({ request, locals }) => {
+export const createVote = async ({ request, locals }) => {
 	if (!locals.user) {
 		return fail(401, { error: 'Unauthorized' });
 	}
@@ -13,7 +13,7 @@ export const postVote = async ({ request, locals }) => {
 		return fail(400, { error: 'Missing postId' });
 	}
 
-	const { error, vote } = await createVote(postId, locals.user.id, parseInt(value));
+	const { error, vote } = await create_vote(postId, locals.user.id, parseInt(value));
 
 	if (error) {
 		return fail(500, { error });
@@ -34,7 +34,7 @@ export const deleteVote = async ({ request, locals }) => {
 		return fail(400, { error: 'Missing postId' });
 	}
 
-	const { error } = await removeVote(postId, locals.user.id);
+	const { error } = await delete_vote(postId, locals.user.id);
 
 	if (error) {
 		return fail(500, { error });

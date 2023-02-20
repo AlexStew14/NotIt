@@ -5,9 +5,9 @@
 <div class="sidebar-container">
 	<p class="topic-header">MY COMMUNITIES</p>
 	<div class="communities">
-		{#each communities as community}
-			<a href={`/n/${community.name}`}>
-				<p>n/{community.name}</p>
+		{#each communities as communityName}
+			<a href={`/n/${communityName}`}>
+				<p>n/{communityName}</p>
 			</a>
 		{/each}
 	</div>

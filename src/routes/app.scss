@@ -38,6 +38,12 @@ textarea {
 	resize: none;
 }
 
+pre {
+	word-wrap: break-word;
+	white-space: pre-wrap;
+	font: inherit;
+}
+
 p,
 h1,
 h2,
@@ -60,6 +66,11 @@ html {
 		var(--primary-saturation),
 		calc(var(--primary-lightness) + 5%)
 	);
+	--primary3: hsl(
+		var(--primary-hue),
+		var(--primary-saturation),
+		calc(var(--primary-lightness) + 10%)
+	);
 
 	--secondary-hue: 16;
 	--secondary-saturation: 100%;
@@ -70,6 +81,11 @@ html {
 		var(--secondary-hue),
 		var(--secondary-saturation),
 		calc(var(--secondary-lightness) + 5%)
+	);
+	--secondary3: hsl(
+		var(--secondary-hue),
+		var(--secondary-saturation),
+		calc(var(--secondary-lightness) + 10%)
 	);
 
 	--surface1: hsl(0, 0%, 100%);
@@ -113,11 +129,22 @@ button {
 	}
 }
 
-@mixin custom-button {
+@mixin custom-button($border-color, $background-color, $hover-color, $font-color, $active-color) {
 	padding: 0.25rem 1rem;
 	border-radius: 1rem;
 	font-weight: bold;
 	transition: background-color 0.2s ease-in-out;
+	background-color: $background-color;
+	border: 1px solid $border-color;
+	color: $font-color;
+
+	&:hover {
+		background-color: $hover-color;
+	}
+
+	&:active {
+		background-color: $active-color;
+	}
 
 	&:focus-visible {
 		outline: 1px solid var(--text1);
@@ -125,34 +152,14 @@ button {
 }
 
 .primary-filled-button {
-	@include custom-button;
-	background-color: var(--primary1);
-	color: var(--surface1);
-	border: 1px solid var(--primary1);
-
-	&:hover {
-		background-color: var(--primary2);
-	}
-}
-
-.primary-outlined-button {
-	@include custom-button;
-	background-color: var(--surface1);
-	color: var(--primary1);
-	border: 1px solid var(--primary1);
-
-	&:hover {
-		background-color: var(--surface2);
-	}
+	@include custom-button(var(--primary1), var(--primary1), var(--primary2), var(--surface1), var(--primary3));
 }
 
 .secondary-filled-button {
-	@include custom-button;
-	background-color: var(--secondary1);
-	color: var(--surface1);
-	border: 1px solid var(--secondary1);
-
-	&:hover {
-		background-color: var(--secondary2);
-	}
+	@include custom-button(var(--secondary1), var(--secondary1), var(--secondary2), var(--surface1), var(--secondary3));
 }
+
+.primary-outlined-button {
+	@include custom-button(var(--primary1), var(--surface1), var(--surface2), var(--primary1), var(--surface3));
+}
+

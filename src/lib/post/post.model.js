@@ -1,6 +1,6 @@
 import db from '$lib/db.js';
 
-export async function createPost(title, content, authorId, communityName) {
+export async function create_post(title, content, authorId, communityName) {
 	try {
 		const post = await db.post.create({
 			data: {
@@ -17,7 +17,7 @@ export async function createPost(title, content, authorId, communityName) {
 	}
 }
 
-export async function getPosts() {
+export async function get_posts() {
 	try {
 		let posts = await db.post.findMany({
 			select: {
@@ -55,7 +55,7 @@ export async function getPosts() {
 	}
 }
 
-export async function getPost(id) {
+export async function get_post(id) {
 	try {
 		let post = await db.post.findUnique({
 			where: {

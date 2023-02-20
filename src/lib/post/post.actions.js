@@ -1,14 +1,14 @@
 import { fail, redirect } from '@sveltejs/kit';
-import { postSerializers } from '$lib/post/post.serializers.js';
-import { createPost } from '$lib/post/post.model.js';
+import { postSerializer } from '$lib/post/post.serializers.js';
+import { create_post } from '$lib/post/post.model.js';
 
-export const postPost = async ({ request, locals }) => {
+export const createPost = async ({ request, locals }) => {
 	if (!locals.user) {
 		return fail(401, { error: 'Unauthorized' });
 	}
 
 	const formData = Object.fromEntries(await request.formData());
-	const postData = postSerializers.safeParse(formData);
+	const postData = postSerializer.safeParse(formData);
 
 	if (!postData.success) {
 		const errors = postData.error.flatten().fieldErrors;
@@ -17,7 +17,7 @@ export const postPost = async ({ request, locals }) => {
 
 	const { title, content, communityName } = postData.data;
 
-	const { error, post } = await createPost(title, content, locals.user.id, communityName);
+	const { error, post } = await create_post(title, content, locals.user.id, communityName);
 	if (error) {
 		return fail(500, { error });
 	}

@@ -18,7 +18,7 @@
 	<div class="sidebar-container">
 		<div class="interaction-container">
 			{#if $user && postVoteValue !== 1}
-				<form method="POST" action="/?/postVote" use:enhance>
+				<form method="POST" action="/?/createVote" use:enhance>
 					<input name="postId" value={id} type="hidden" />
 					<input name="value" value={1} type="hidden" />
 					<button class="up-button" type="submit" />
@@ -54,7 +54,7 @@
 			<h3 class="post-title">{title}</h3>
 		</a>
 		<div class="post-content">
-			{content}
+			<pre> {content}</pre>
 		</div>
 	</div>
 </div>
@@ -126,9 +126,6 @@
 					}
 				}
 			}
-
-			.post-content {
-			}
 		}
 
 		.inner-detail {
@@ -137,7 +134,6 @@
 	}
 
 	.detail {
-		//overflow-y: scroll;
 		max-height: 100%;
 	}
 </style>

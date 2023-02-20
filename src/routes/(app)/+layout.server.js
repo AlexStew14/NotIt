@@ -1,5 +1,5 @@
 import { fail, redirect } from '@sveltejs/kit';
-import { getCommunities } from '$lib/user/user.model.js';
+import { get_user_communities } from '$lib/user/user.model.js';
 
 export const load = async ({ locals, url }) => {
 	const user = locals.user;
@@ -11,7 +11,7 @@ export const load = async ({ locals, url }) => {
 	}
 
 	if (user) {
-		const { error: communityError, communities } = await getCommunities(locals.user.id);
+		const { error: communityError, communities } = await get_user_communities(locals.user.id);
 
 		if (communityError) {
 			console.log(communityError);
