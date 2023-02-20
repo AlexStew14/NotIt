@@ -16,5 +16,8 @@
 		padding: 2rem 0;
 		margin: 0 auto;
 		max-width: 40rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
 	}
 </style>

@@ -10,8 +10,8 @@
 
 {#if communities}
 	<div class="page-container">
-		<h3 class="post-title">Create a post</h3>
 		<form class="post-form" method="POST" action="?/createPost" use:enhance>
+			<h3 class="post-title">Create a post</h3>
 			<div class="line" />
 			<input
 				list="communities"
@@ -45,7 +45,7 @@
 						error={form?.error?.content}
 						type="textarea"
 						name="content"
-						placeholder="Text (optional)"
+						placeholder="Text"
 					/>
 					<div class="submit-button-container">
 						<button class="primary-filled-button" type="submit">Post</button>
@@ -58,19 +58,18 @@
 
 <style lang="scss">
 	.page-container {
-		margin-top: 6rem;
-		margin-left: 3rem;
 		padding: 0 2rem;
-
-		.post-title {
-			font-weight: 400;
-		}
 
 		.post-form {
 			max-width: 46rem;
+			margin: 5rem auto 0;
 			display: flex;
 			flex-direction: column;
 			gap: 0.5rem;
+
+			.post-title {
+				font-weight: 400;
+			}
 
 			.line {
 				border-top: 1px solid var(--surface2);
@@ -114,7 +113,6 @@
 
 					.selected {
 						color: var(--primary2);
-						background-color: var(--surface2);
 						border-bottom: 2px solid var(--primary2);
 					}
 				}

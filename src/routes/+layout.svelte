@@ -2,4 +2,12 @@
 	import './app.scss';
 </script>
 
-<slot />
+<div class="hide-overflow">
+	<slot />
+</div>
+
+<style>
+	.hide-overflow {
+		overflow-y: hidden;
+	}
+</style>

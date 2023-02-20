@@ -1,4 +1,4 @@
-import { getPost } from '$lib/post.model.js';
+import { getPost } from '$lib/post/post.model.js';
 
 export const load = async ({ locals, url, params }) => {
 	const { postId } = params;

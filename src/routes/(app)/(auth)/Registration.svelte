@@ -72,7 +72,7 @@
 		z-index: 9999;
 
 		.auth-container {
-			height: 95%;
+			max-height: 95%;
 			width: 400px;
 			position: fixed;
 			display: flex;

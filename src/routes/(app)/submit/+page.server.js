@@ -1,6 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit';
-import { createPost } from '$lib/post.model.js';
-import { postSchema } from './schema.js';
+import { createPost } from '$lib/post/post.model.js';
+import { postSchema } from '$lib/post/post.schema.js';
 
 export const actions = {
 	createPost: async ({ request, locals }) => {
@@ -23,6 +23,6 @@ export const actions = {
 			return fail(500, { error });
 		}
 
-		throw redirect(302, '/');
+		throw redirect(302, `/n/${communityName}/comments/${post.id}`);
 	}
 };

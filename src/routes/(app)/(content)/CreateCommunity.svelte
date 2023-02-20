@@ -1,5 +1,5 @@
 <script>
-	import CustomInput from '../../(common)/CustomInput.svelte';
+	import CustomInput from '../(common)/CustomInput.svelte';
 	import { enhance } from '$app/forms';
 	import { createCommunityOpen } from '$lib/stores.js';
 
@@ -9,7 +9,7 @@
 <div class="page-container">
 	<div class="community-container">
 		<button class="exit-button" on:click={() => ($createCommunityOpen = false)}>X</button>
-		<h4>Create a community</h4>
+		<h4 class="create-text">Create a community</h4>
 		<div class="spacer" />
 		<div>
 			<h4 class="title-text">Name</h4>
@@ -18,7 +18,7 @@
 		<form
 			class="community-form"
 			method="POST"
-			action="/?/createCommunity"
+			action="/?/postCommunity"
 			use:enhance={() => {
 				return async ({ result, update }) => {
 					formData = result.data;
@@ -40,6 +40,7 @@
 				name="description"
 				type="textarea"
 				placeholder="Description"
+				rows="3"
 				error={formData?.error?.description}
 			/>
 			<div class="bottom-container">
@@ -65,12 +66,12 @@
 		z-index: 9999;
 
 		.community-container {
-			height: 80%;
+			max-height: 80%;
 			width: 500px;
 			position: fixed;
 			background-color: var(--surface1);
 			border-radius: 0.5rem;
-			padding: 0 1rem;
+			padding: 1rem;
 
 			.exit-button {
 				color: var(--text3);
@@ -83,13 +84,15 @@
 				}
 			}
 
-			h4 {
+			.create-text {
+				margin-bottom: 1rem;
 				font-weight: 400;
 			}
 
 			.title-text {
 				margin: 0;
 				padding: 0;
+				font-weight: 400;
 			}
 
 			.info-text {
@@ -105,12 +108,9 @@
 				gap: 1rem;
 
 				.bottom-container {
-					position: absolute;
-					bottom: 0.5rem;
-					right: 0.5rem;
-
-					.cancel-button {
-					}
+					display: flex;
+					justify-content: flex-end;
+					gap: 0.5rem;
 				}
 			}
 		}

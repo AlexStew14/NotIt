@@ -1,4 +1,4 @@
-import { getCommunity } from '$lib/community.model.js';
+import { getCommunity } from '$lib/community/community.model.js';
 
 export const load = async ({ locals, url, params }) => {
 	const { name } = params;

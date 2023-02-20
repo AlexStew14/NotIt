@@ -3,6 +3,7 @@
 	export let type;
 	export let name;
 	export let placeholder;
+	export let rows;
 
 	export let maxLength;
 	export let leftText;
@@ -11,7 +12,7 @@
 </script>
 
 {#if type === 'textarea'}
-	<textarea class="custom-input" {name} {placeholder} rows="8" />
+	<textarea class="custom-input" {name} {placeholder} rows={rows || 8} />
 {:else}
 	<div class="input-container">
 		<input

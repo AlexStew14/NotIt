@@ -12,7 +12,7 @@
 	<div class="page-container">
 		<div class="content-container">
 			<div class="header-container">
-				<button class="close" />
+				<a href={`/n/${communityName}/`} class="close">X Close</a>
 			</div>
 			<div class="post-container">
 				<UserPost
@@ -37,6 +37,7 @@
 		position: fixed;
 		z-index: 3;
 		background-color: var(--surface5);
+		min-height: calc(100vh - var(--navbar-height));
 
 		.content-container {
 			max-width: 65rem;
@@ -47,6 +48,17 @@
 				width: 100%;
 				height: 3rem;
 				background-color: black;
+				display: flex;
+				align-items: center;
+				justify-content: flex-end;
+				padding: 0 4.5rem;
+
+				.close {
+					color: var(--surface1);
+					&:hover {
+						color: var(--surface3);
+					}
+				}
 			}
 
 			.post-container {
