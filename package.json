@@ -7,6 +7,7 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
+		"lint:scss": "stylelint 'src/**/*.{css,scss,svelte}'",
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
@@ -15,10 +16,16 @@
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
+		"postcss": "^8.4.21",
+		"postcss-html": "^1.5.0",
 		"prettier": "^2.8.0",
 		"prettier-plugin-svelte": "^2.8.1",
 		"prisma": "^4.10.1",
 		"sass": "^1.58.1",
+		"stylelint": "^15.2.0",
+		"stylelint-config-recommended-scss": "^9.0.1",
+		"stylelint-config-standard": "^30.0.1",
+		"stylelint-scss": "^4.4.0",
 		"svelte": "^3.54.0",
 		"vite": "^4.0.0"
 	},

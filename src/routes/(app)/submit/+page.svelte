@@ -68,7 +68,7 @@
 			gap: 0.5rem;
 
 			.post-title {
-				font-weight: 400;
+				font-weight: normal;
 			}
 
 			.line {

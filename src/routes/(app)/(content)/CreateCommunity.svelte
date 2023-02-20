@@ -86,13 +86,13 @@
 
 			.create-text {
 				margin-bottom: 1rem;
-				font-weight: 400;
+				font-weight: normal;
 			}
 
 			.title-text {
 				margin: 0;
 				padding: 0;
-				font-weight: 400;
+				font-weight: normal;
 			}
 
 			.info-text {

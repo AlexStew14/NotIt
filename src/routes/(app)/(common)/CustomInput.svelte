@@ -71,7 +71,7 @@
 
 		&:focus,
 		&:focus-visible {
-			outline: 1px solid black;
+			outline: 1px solid #000000;
 		}
 	}
 
@@ -80,7 +80,7 @@
 	}
 
 	.form-error {
-		color: red;
+		color: #ff0000;
 		margin: 0;
 		font-size: var(--font-medium);
 	}
