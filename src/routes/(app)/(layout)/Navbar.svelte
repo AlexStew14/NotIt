@@ -86,7 +86,6 @@
 			align-items: center;
 			justify-content: space-around;
 
-			max-width: 500px;
 			padding-right: 3rem;
 
 			text-align: center;

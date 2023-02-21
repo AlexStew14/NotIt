@@ -107,7 +107,7 @@
 
 			.post-container {
 				overflow-y: scroll;
-				max-height: 90vh;
+				max-height: calc(100vh - var(--navbar-height));
 				padding: 2rem 4rem 4rem;
 
 				.spacer {
