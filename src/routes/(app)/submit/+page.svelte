@@ -4,8 +4,8 @@
 	export let form;
 	export let data;
 
-	let communities;
 	$: ({ communities } = data);
+	$: console.log(communities);
 </script>
 
 {#if communities}
@@ -13,18 +13,11 @@
 		<form class="post-form" method="POST" action="?/createPost" use:enhance>
 			<h3 class="post-title">Create a post</h3>
 			<div class="line" />
-			<input
-				list="communities"
-				class="communities-select"
-				name="communityName"
-				maxlength="21"
-				placeholder="Choose a community"
-			/>
-			<datalist id="communities">
-				{#each communities as community}
-					<option value={community.name}>{community.name}</option>
+			<select class="communities-select" name="communityName">
+				{#each communities as communityName}
+					<option value={communityName}>{communityName}</option>
 				{/each}
-			</datalist>
+			</select>
 			<div class="post-container">
 				<div class="post-header">
 					<button type="button" class="header-tab selected">Post</button>
