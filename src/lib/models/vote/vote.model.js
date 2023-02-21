@@ -1,4 +1,5 @@
 import db from '$lib/db.js';
+import { handlePrismaError } from '$lib/common.js';
 
 export async function create_vote(postId, userId, value) {
 	try {
@@ -21,8 +22,7 @@ export async function create_vote(postId, userId, value) {
 
 		return { vote };
 	} catch (error) {
-		console.log(error);
-		return { error };
+		return handlePrismaError(error);
 	}
 }
 
@@ -38,7 +38,6 @@ export async function delete_vote(postId, userId) {
 		});
 		return {};
 	} catch (error) {
-		console.log(error);
-		return { error };
+		return handlePrismaError(error);
 	}
 }

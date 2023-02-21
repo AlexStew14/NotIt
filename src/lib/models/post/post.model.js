@@ -1,4 +1,5 @@
 import db from '$lib/db.js';
+import { handlePrismaError } from '$lib/common.js';
 
 export async function create_post(title, content, authorId, communityName) {
 	try {
@@ -12,8 +13,7 @@ export async function create_post(title, content, authorId, communityName) {
 		});
 		return { post };
 	} catch (error) {
-		console.log(error);
-		return { error };
+		return handlePrismaError(error);
 	}
 }
 
@@ -50,8 +50,7 @@ export async function get_posts() {
 
 		return { posts };
 	} catch (error) {
-		console.log(error);
-		return { error };
+		return handlePrismaError(error);
 	}
 }
 
@@ -99,7 +98,6 @@ export async function get_post(id) {
 
 		return { post };
 	} catch (error) {
-		console.log(error);
-		return { error };
+		return handlePrismaError(error);
 	}
 }

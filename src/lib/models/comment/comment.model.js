@@ -1,4 +1,5 @@
 import db from '$lib/db.js';
+import { handlePrismaError } from '$lib/common.js';
 
 export const create_comment = async (content, authorId, postId) => {
 	try {
@@ -10,7 +11,6 @@ export const create_comment = async (content, authorId, postId) => {
 			}
 		});
 	} catch (error) {
-		console.log(error);
-		return { error };
+		return handlePrismaError(error);
 	}
 };

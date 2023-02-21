@@ -1,4 +1,5 @@
 import db from '$lib/db.js';
+import { handlePrismaError } from '$lib/common.js';
 
 export async function create_community(name, description, userId) {
 	try {
@@ -16,11 +17,7 @@ export async function create_community(name, description, userId) {
 
 		return { community };
 	} catch (error) {
-		if (error?.code === 'P2002') {
-			const target = error.meta.target;
-			return { error: { [target]: `Community with this ${target} already exists` } };
-		}
-		return { error };
+		return handlePrismaError(error);
 	}
 }
 
@@ -70,8 +67,7 @@ export async function get_community(name) {
 
 		return { community };
 	} catch (error) {
-		console.log(error);
-		return { error };
+		return handlePrismaError(error);
 	}
 }
 
@@ -91,8 +87,7 @@ export async function join_community(name, userId) {
 		});
 		return {};
 	} catch (error) {
-		console.log(error);
-		return { error };
+		return handlePrismaError(error);
 	}
 }
 
@@ -112,7 +107,6 @@ export async function leave_community(name, userId) {
 		});
 		return {};
 	} catch (error) {
-		console.log(error);
-		return { error };
+		return handlePrismaError(error);
 	}
 }

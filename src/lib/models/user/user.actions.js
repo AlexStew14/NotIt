@@ -40,6 +40,7 @@ export const signup = async ({ cookies, request }) => {
 	const { error, token } = await create_user(email, password);
 
 	if (error) {
+		console.log({ error });
 		return fail(500, { error });
 	}
 

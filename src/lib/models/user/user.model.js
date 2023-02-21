@@ -2,6 +2,7 @@ import { JWT_ACCESS_SECRET } from '$env/static/private';
 import db from '$lib/db.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import { handlePrismaError } from '$lib/common.js';
 
 export async function create_user(email, password) {
 	try {
@@ -18,8 +19,7 @@ export async function create_user(email, password) {
 
 		return { token };
 	} catch (error) {
-		console.log(error);
-		return { error };
+		return handlePrismaError(error);
 	}
 }
 
@@ -47,8 +47,7 @@ export async function login_user(email, password) {
 
 		return { token };
 	} catch (error) {
-		console.log(error);
-		return { error };
+		return handlePrismaError(error);
 	}
 }
 
@@ -69,7 +68,6 @@ export async function get_user_communities(id) {
 		communities = communities.communities.map((community) => community.name);
 		return { communities };
 	} catch (error) {
-		console.log(error);
-		return { error };
+		return handlePrismaError(error);
 	}
 }

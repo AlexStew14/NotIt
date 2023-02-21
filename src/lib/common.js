@@ -1,4 +1,5 @@
 import { fail } from '@sveltejs/kit';
+import { Prisma } from '@prisma/client';
 
 export const handleForm = async ({ request, locals, serializer }) => {
 	if (locals !== undefined && !locals?.user) {
@@ -15,4 +16,18 @@ export const handleForm = async ({ request, locals, serializer }) => {
 	}
 
 	return data.data;
+};
+
+export const handlePrismaError = (error) => {
+	console.log(error);
+	if (error instanceof Prisma.PrismaClientKnownRequestError) {
+		if (error.code === 'P2002') {
+			const targets = error.meta.target;
+			const errors = targets.map((target) => {
+				return { [target]: `Model with this ${target} already exists` };
+			});
+			return { error: errors };
+		}
+	}
+	return { error: 'Something went wrong' };
 };
