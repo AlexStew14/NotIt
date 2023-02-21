@@ -12,7 +12,6 @@ export const load = async ({ locals, url }) => {
 		return fail(500, { error: postError });
 	}
 
-	console.log(posts);
 	return { posts };
 };
 

@@ -1,9 +1,12 @@
 <script>
+	import { user } from '$lib/stores.js';
 	export let communities;
 </script>
 
 <div class="sidebar-container">
-	<p class="topic-header">MY COMMUNITIES</p>
+	{#if $user}
+		<p class="topic-header">MY COMMUNITIES</p>
+	{/if}
 	<div class="communities">
 		{#each communities as communityName}
 			<a href={`/n/${communityName}`}>

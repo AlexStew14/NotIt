@@ -1,11 +1,10 @@
 <script>
 	import { enhance } from '$app/forms';
 	import UserPost from '../../(content)/UserPost.svelte';
+	import { user } from '$lib/stores.js';
 
 	export let data;
-	$: inCommunity = data?.communities.includes(data?.community?.name);
-	$: console.log(inCommunity);
-	$: console.log(data);
+	$: inCommunity = data?.communities?.includes(data?.community?.name);
 </script>
 
 {#if data?.community}
@@ -14,13 +13,19 @@
 			<h2>
 				{data.community.name}
 			</h2>
-			<form action={inCommunity ? '?/leaveCommunity' : '?/joinCommunity'} method="POST" use:enhance>
-				<input type="hidden" name="name" value={data.community.name} />
-				<button
-					class={inCommunity ? 'secondary-filled-button' : 'primary-filled-button'}
-					type="submit">{inCommunity ? 'Joined' : 'Join'}</button
+			{#if $user}
+				<form
+					action={inCommunity ? '?/leaveCommunity' : '?/joinCommunity'}
+					method="POST"
+					use:enhance
 				>
-			</form>
+					<input type="hidden" name="name" value={data.community.name} />
+					<button
+						class={inCommunity ? 'secondary-filled-button' : 'primary-filled-button'}
+						type="submit">{inCommunity ? 'Joined' : 'Join'}</button
+					>
+				</form>
+			{/if}
 		</div>
 		<p>
 			{data.community.description}

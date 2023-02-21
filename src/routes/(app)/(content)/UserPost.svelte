@@ -72,6 +72,7 @@
 
 		.sidebar-container {
 			min-width: 2.5rem;
+			background-color: var(--surface2);
 
 			.interaction-container {
 				display: flex;
@@ -125,6 +126,11 @@
 						text-decoration: underline;
 					}
 				}
+			}
+
+			.post-title {
+				margin-bottom: 0.5rem;
+				font-weight: bold;
 			}
 		}
 

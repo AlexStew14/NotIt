@@ -5,7 +5,6 @@
 	export let data;
 
 	$: ({ communities } = data);
-	$: console.log(communities);
 </script>
 
 {#if communities}

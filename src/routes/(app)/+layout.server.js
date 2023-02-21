@@ -14,7 +14,6 @@ export const load = async ({ locals, url }) => {
 		const { error: communityError, communities } = await get_user_communities(locals.user.id);
 
 		if (communityError) {
-			console.log(communityError);
 			return fail(500, { error: communityError });
 		}
 		return { user, communities };

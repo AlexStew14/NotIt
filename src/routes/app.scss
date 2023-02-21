@@ -44,7 +44,17 @@ pre {
 	font: inherit;
 }
 
+i,
+cite,
+em,
+var,
+dfn,
+address {
+	font-style: normal;
+}
+
 p,
+b,
 h1,
 h2,
 h3,
@@ -52,6 +62,7 @@ h4,
 h5,
 h6 {
 	overflow-wrap: break-word;
+	font-weight: normal;
 }
 // END RESETS
 
@@ -152,14 +163,31 @@ button {
 }
 
 .primary-filled-button {
-	@include custom-button(var(--primary1), var(--primary1), var(--primary2), var(--surface1), var(--primary3));
+	@include custom-button(
+		var(--primary1),
+		var(--primary1),
+		var(--primary2),
+		var(--surface1),
+		var(--primary3)
+	);
 }
 
 .secondary-filled-button {
-	@include custom-button(var(--secondary1), var(--secondary1), var(--secondary2), var(--surface1), var(--secondary3));
+	@include custom-button(
+		var(--secondary1),
+		var(--secondary1),
+		var(--secondary2),
+		var(--surface1),
+		var(--secondary3)
+	);
 }
 
 .primary-outlined-button {
-	@include custom-button(var(--primary1), var(--surface1), var(--surface2), var(--primary1), var(--surface3));
+	@include custom-button(
+		var(--primary1),
+		var(--surface1),
+		var(--surface2),
+		var(--primary1),
+		var(--surface3)
+	);
 }
-
