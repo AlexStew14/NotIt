@@ -1,5 +1,5 @@
-import { get_post } from '$lib/post/post.model.js';
-import { postComment } from '$lib/comment/comment.actions.js';
+import { get_post } from '$lib/models/post/post.model.js';
+import { postComment } from '$lib/models/comment/comment.actions.js';
 
 export const load = async ({ locals, url, params }) => {
 	const { postId } = params;

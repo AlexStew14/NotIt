@@ -1,5 +1,5 @@
 import { fail, redirect } from '@sveltejs/kit';
-import { get_user_communities } from '$lib/user/user.model.js';
+import { get_user_communities } from '$lib/models/user/user.model.js';
 
 export const load = async ({ locals, url }) => {
 	const user = locals.user;
