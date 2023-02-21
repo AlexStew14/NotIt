@@ -27,6 +27,7 @@
 			{#if $user && postVoteValue !== 0}
 				<form method="POST" action="/?/deleteVote" use:enhance>
 					<input name="postId" value={id} type="hidden" />
+					<input name="value" value={0} type="hidden" />
 					<button type="submit">
 						{totalVotes}
 					</button>
@@ -37,7 +38,7 @@
 				</p>
 			{/if}
 			{#if $user && postVoteValue !== -1}
-				<form method="POST" action="/?/postVote" use:enhance>
+				<form method="POST" action="/?/createVote" use:enhance>
 					<input name="postId" value={id} type="hidden" />
 					<input name="value" value={-1} type="hidden" />
 					<button class="down-button" type="submit" />

@@ -5,11 +5,10 @@ import { deleteVote, createVote } from '$lib/models/vote/vote.actions.js';
 import { login, logout, signup } from '$lib/models/user/user.actions.js';
 
 export const load = async ({ locals, url }) => {
-	const { error: postError, posts } = await get_posts();
+	const { error, posts } = await get_posts();
 
-	if (postError) {
-		console.log(postError);
-		return fail(500, { error: postError });
+	if (error) {
+		return fail(500, { error });
 	}
 
 	return { posts };

@@ -17,7 +17,7 @@ export async function create_community(name, description, userId) {
 
 		return { community };
 	} catch (error) {
-		return handlePrismaError(error);
+		return handlePrismaError({ error, modelName: 'Community' });
 	}
 }
 
@@ -67,7 +67,7 @@ export async function get_community(name) {
 
 		return { community };
 	} catch (error) {
-		return handlePrismaError(error);
+		return handlePrismaError({ error, modelName: 'Community' });
 	}
 }
 
@@ -87,7 +87,7 @@ export async function join_community(name, userId) {
 		});
 		return {};
 	} catch (error) {
-		return handlePrismaError(error);
+		return handlePrismaError({ error, modelName: 'Community' });
 	}
 }
 
@@ -107,6 +107,6 @@ export async function leave_community(name, userId) {
 		});
 		return {};
 	} catch (error) {
-		return handlePrismaError(error);
+		return handlePrismaError({ error, modelName: 'Community' });
 	}
 }

@@ -13,7 +13,7 @@ export async function create_post(title, content, authorId, communityName) {
 		});
 		return { post };
 	} catch (error) {
-		return handlePrismaError(error);
+		return handlePrismaError({ error, modelName: 'Post' });
 	}
 }
 
@@ -50,7 +50,7 @@ export async function get_posts() {
 
 		return { posts };
 	} catch (error) {
-		return handlePrismaError(error);
+		return handlePrismaError({ error, modelName: 'Post' });
 	}
 }
 
@@ -98,6 +98,6 @@ export async function get_post(id) {
 
 		return { post };
 	} catch (error) {
-		return handlePrismaError(error);
+		return handlePrismaError({ error, modelName: 'Post' });
 	}
 }

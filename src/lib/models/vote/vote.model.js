@@ -22,7 +22,7 @@ export async function create_vote(postId, userId, value) {
 
 		return { vote };
 	} catch (error) {
-		return handlePrismaError(error);
+		return handlePrismaError({ error, modelName: 'Vote' });
 	}
 }
 
@@ -38,6 +38,6 @@ export async function delete_vote(postId, userId) {
 		});
 		return {};
 	} catch (error) {
-		return handlePrismaError(error);
+		return handlePrismaError({ error, modelName: 'Vote' });
 	}
 }

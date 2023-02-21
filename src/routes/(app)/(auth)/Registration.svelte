@@ -1,8 +1,10 @@
 <script>
 	import { enhance } from '$app/forms';
 	import { registrationOpen } from '$lib/stores.js';
+	import CustomInput from '../(common)/CustomInput.svelte';
 
-	let formData;
+	let form = {};
+	$: ({ status: formStatus, data: formData } = form);
 	let signUp = false;
 </script>
 
@@ -31,7 +33,7 @@
 			action={signUp ? '/?/signup' : '/?/login'}
 			use:enhance={() => {
 				return async ({ result, update }) => {
-					formData = result.data;
+					form = result;
 					update();
 					if (result.type === 'success') {
 						$registrationOpen = false;
@@ -39,23 +41,40 @@
 				};
 			}}
 		>
-			<input class="auth-input" name="email" type="email" placeholder="Email Address" />
-			<input class="auth-input" name="password" type="password" placeholder="Password" />
-			<button class="secondary-filled-button" type="submit">{signUp ? 'Sign Up' : 'Log in'}</button>
-		</form>
-		<div class="signup-info">
-			{#if signUp}
-				<p>
-					Already a NotIt user?
-					<button class="link-text" on:click={() => (signUp = false)}>Log In</button>
-				</p>
-			{:else}
-				<p>
-					New to NotIt?
-					<button class="link-text" on:click={() => (signUp = true)}>Sign Up</button>
+			<CustomInput
+				name="email"
+				type="email"
+				placeholder="Email Address"
+				error={formData?.error?.email}
+				rounded
+			/>
+			<CustomInput
+				name="password"
+				type="password"
+				placeholder="Password"
+				error={formData?.error?.password}
+				rounded
+			/>
+			{#if formStatus === 500}
+				<p class="error-text">
+					{formData.error}
 				</p>
 			{/if}
-		</div>
+			<button class="secondary-filled-button" type="submit">{signUp ? 'Sign Up' : 'Log in'}</button>
+			<div class="signup-info">
+				<p>
+					{signUp ? 'Already a NotIt user?' : 'New to NotIt?'}
+					<button
+						class="link-text"
+						type="reset"
+						on:click={() => {
+							signUp = !signUp;
+							form = {};
+						}}>{signUp ? 'Log In' : 'Sign Up'}</button
+					>
+				</p>
+			</div>
+		</form>
 	</div>
 </div>
 
@@ -160,15 +179,8 @@
 				gap: 1rem;
 				width: 100%;
 
-				.auth-input {
-					padding: 0.75rem;
-					border: 1px solid var(--surface3);
-					border-radius: 2rem;
-					transition: all 0.3s;
-
-					&:hover {
-						border: 1px solid var(--surface4);
-					}
+				.error-text {
+					color: #ff0000;
 				}
 			}
 

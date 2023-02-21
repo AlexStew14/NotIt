@@ -11,6 +11,6 @@ export const create_comment = async (content, authorId, postId) => {
 			}
 		});
 	} catch (error) {
-		return handlePrismaError(error);
+		return handlePrismaError({ error, modelName: 'Comment' });
 	}
 };

@@ -11,20 +11,19 @@ export const handleForm = async ({ request, locals, serializer }) => {
 
 	if (!data.success) {
 		const errors = data.error.flatten().fieldErrors;
-		console.log(errors);
 		return { formError: fail(400, { error: errors }) };
 	}
 
 	return data.data;
 };
 
-export const handlePrismaError = (error) => {
-	console.log(error);
+export const handlePrismaError = ({ error, modelName }) => {
 	if (error instanceof Prisma.PrismaClientKnownRequestError) {
 		if (error.code === 'P2002') {
 			const targets = error.meta.target;
-			const errors = targets.map((target) => {
-				return { [target]: `Model with this ${target} already exists` };
+			const errors = {};
+			targets.forEach((target) => {
+				errors[target] = [`${modelName} with this ${target} already exists`];
 			});
 			return { error: errors };
 		}

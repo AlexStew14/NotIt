@@ -7,34 +7,41 @@
 
 	export let maxLength;
 	export let leftText;
+	export let rounded;
 
 	let inputValue;
 </script>
 
-{#if type === 'textarea'}
-	<textarea class="custom-input" {name} {placeholder} rows={rows || 8} />
-{:else}
-	<div class="input-container">
-		<input
-			bind:value={inputValue}
-			class="custom-input"
-			class:left-padded={!!leftText}
-			type="text"
-			{maxLength}
-			{name}
-			{placeholder}
-		/>
-		{#if leftText}
-			<span class="left-text">{leftText}</span>
-		{/if}
-		{#if maxLength}
-			<span class="length-text">{inputValue?.length || 0}/{maxLength}</span>
-		{/if}
-	</div>
-{/if}
-{#if error}
-	<p class="form-error">{error}</p>
-{/if}
+<div>
+	{#if type === 'textarea'}
+		<textarea class="custom-input" {name} {placeholder} rows={rows || 8} />
+	{:else if type === 'text'}
+		<div class="input-container">
+			<input
+				bind:value={inputValue}
+				class="custom-input"
+				type="text"
+				class:left-padded={!!leftText}
+				class:rounded={!!rounded}
+				{maxLength}
+				{name}
+				{placeholder}
+			/>
+			{#if leftText}
+				<span class="left-text">{leftText}</span>
+			{/if}
+			{#if maxLength}
+				<span class="length-text">{inputValue?.length || 0}/{maxLength}</span>
+			{/if}
+		</div>
+	{:else}
+		<input class="custom-input" {type} class:rounded={!!rounded} {maxLength} {name} {placeholder} />
+	{/if}
+
+	{#if error}
+		<p class="form-error" class:error-rounded={!!rounded}>{error}</p>
+	{/if}
+</div>
 
 <style lang="scss">
 	.input-container {
@@ -77,13 +84,22 @@
 		}
 	}
 
+	.rounded {
+		border-radius: 2rem;
+	}
+
 	.left-padded {
 		padding-left: 1.5rem;
 	}
 
 	.form-error {
-		margin: 0;
+		margin-top: 0.5rem;
+		padding: 0;
 		font-size: var(--font-medium);
 		color: #ff0000;
+	}
+
+	.error-rounded {
+		margin-left: 0.5rem;
 	}
 </style>

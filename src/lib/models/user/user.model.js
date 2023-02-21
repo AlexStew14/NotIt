@@ -19,7 +19,7 @@ export async function create_user(email, password) {
 
 		return { token };
 	} catch (error) {
-		return handlePrismaError(error);
+		return handlePrismaError({ error, modelName: 'User' });
 	}
 }
 
@@ -47,7 +47,7 @@ export async function login_user(email, password) {
 
 		return { token };
 	} catch (error) {
-		return handlePrismaError(error);
+		return handlePrismaError({ error, modelName: 'User' });
 	}
 }
 
@@ -68,6 +68,6 @@ export async function get_user_communities(id) {
 		communities = communities.communities.map((community) => community.name);
 		return { communities };
 	} catch (error) {
-		return handlePrismaError(error);
+		return handlePrismaError({ error, modelName: 'User' });
 	}
 }
